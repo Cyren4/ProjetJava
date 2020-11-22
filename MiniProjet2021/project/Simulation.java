@@ -105,14 +105,14 @@ class Simulation{
         if (map.caseEstVide(newRessource.getX(), newRessource.getY())){
             ress.add(newRessource);
             map.setCase(newRessource.getX(), newRessource.getY(), newRessource);
-        }else{
+        } else {
             Ressource tmp = map.getCase(newRessource.getX(), newRessource.getY());
             if (nbRessource.type.equals(tmp.type))
                 tmp.setQuantite(tmp.getQuantite() + newRessource.getQuantite());
         }
     }
 
-    public void add(Cellle newCell) {
+    public void add(Cellule newCell) {
         cel.add(newCell);
     }
      

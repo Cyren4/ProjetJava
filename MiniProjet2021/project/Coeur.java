@@ -5,7 +5,7 @@ class Coeur extends Organe{
     public Coeur(Terrain t){
         super("Coeur", t);
         capacite = 10;
-        oxygenation = 0;
+        nbO2 = 0;
     }
 
     public void update(Simulation sim){

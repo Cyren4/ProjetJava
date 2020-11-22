@@ -20,7 +20,7 @@ class Organe{
 
     public void production(String nom, Simulation sim, int quantite){
         Random rnd = new Random();
-        newRes = new Ressource(nom, quantite);
+        Ressource newRes = new Ressource(nom, quantite);
         newRes.setPosition(rnd.nextInt(sim.map.nbLignes) , rnd.nextInt(map.nbColonnes)); 
         sim.add(newRes);
     }
