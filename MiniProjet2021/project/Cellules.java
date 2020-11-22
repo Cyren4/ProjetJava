@@ -4,8 +4,8 @@ class Cellules{
     private final String type;
     private static int cpt;
     private int dureeVie;
-    private int y;//ligne
-    private int x;//colonne
+    protected int y;//ligne
+    protected int x;//colonne
 
     public Cellules(String type, int dureeVie, Terrain t){
         Random rnd = new Random();
@@ -27,12 +27,11 @@ class Cellules{
 
     //xnew:nouvelle colonne
     //ynew:nouvelle ligne 
-    /*public void seDeplacer(int xnew, int ynew){
-        if (!freeze){
-            x = xnew;
-            y = ynew;
-        }
-    }*/
+    public void seDeplacer(int xnew, int ynew){
+        x = xnew;
+        y = ynew;
+
+    }
 
     public void update(Simulation sim) {
         dureeVie--;

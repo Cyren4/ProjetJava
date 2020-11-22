@@ -1,4 +1,4 @@
-import java.util.*; //need Random and Scanner
+import java.util.*; //need Random and Scanner and ArrayList
 
 class Simulation{
     public final int NBRESSOURCESMAX; //nb max de ressources sur le terrain
@@ -92,5 +92,19 @@ class Simulation{
             }
         }
     }
+
+    public int[] getCoeurCoord() {
+        return org[0].getCoord();
+    }
+
+    public int[] getPoumonCoord() {
+        return org[1].getCoord();
+    }
+
+    public Terrain getTerrain() {
+        return map;
+    }
+
+
 
 }
