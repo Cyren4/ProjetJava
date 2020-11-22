@@ -19,6 +19,7 @@ class Simulation{
         NBRESSOURCESMAX = map.nbColonnes * map.nbLignes <= 0 ? 1 : map.nbColonnes * map.nbLignes;
         initRessource(rnd, map); // position le coeur et les poumons
         initOrgane(map); // position le coeur et les poumons
+        initCellule();
 
         map.affiche(); 
         System.out.printf(map.toString());
@@ -64,8 +65,10 @@ class Simulation{
         }   
     }
 
-    private void initCellule(Random rnd) {
+    private void initCellule() {
         cel = new ArrayList<Cellule>();
+        cel.add(new Pathogene("Bactérie",map));
+        cel.add(new Globine(map));
     }
 
     public void initOrgane(Terrain t){
@@ -98,6 +101,7 @@ class Simulation{
             for (Organe org_:org) {
                 //org_.update(this);
             }
+            affiche();
         }
     }
 
@@ -141,4 +145,15 @@ class Simulation{
     public void remove(Cellule oldCel){
         cel.remove(oldCel);
     }
+
+    public void affiche() {
+        map.affiche();
+        System.out.println(this.getCoeur());
+        System.out.println(org[1]);
+        for (Cellule cel_ : cel) {
+            System.out.println(cel_);
+        }
+    }
+
+
 }

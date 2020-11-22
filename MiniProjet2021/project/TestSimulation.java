@@ -24,8 +24,10 @@ class TestSimulation{
         Scanner sc = new Scanner(System.in);
         int jeu = Start(sc);
 
-        if (jeu == 1)
-            new Simulation(sc);
+        if (jeu == 1) {
+            Simulation s = new Simulation(sc);
+            s.simulate();
+        }
         else
             System.out.println("You chose to quit the Simulation.\nSee you soon!");
         

@@ -16,7 +16,7 @@ class Cellule{
         cpt++;
     }
 
-    public Cellule(String type, int dureeVie , int y, int x){
+    public Cellule(String type, int dureeVie , int x, int y){
         this.type = type;
         this.dureeVie = dureeVie;
         this.y = y;
@@ -46,5 +46,9 @@ class Cellule{
         if (estMort()) {
             sim.remove(this);
         }
+    }
+
+    public String toString() {
+        return type + " : [" + y + "," + x + "]";
     }
 }

@@ -11,6 +11,10 @@ class Globine extends Cellule{
         capaciteTransp = rnd.nextInt(5) + 1;
     }
 
+    public Globine(int x, int y) {
+        super("Globule rouge",20,x,y);
+    }
+
 
     public void update(Simulation sim) {
         super.update(sim);
@@ -18,7 +22,13 @@ class Globine extends Cellule{
 
 
         if (transporte_ressource == 0) { //ne transporte pas de ressources, donc bouge aléatoirement
-            super.seDeplacer(x + (int)(Math.random() * 3) - 1, y + (int)(Math.random() * 3) - 1); //FIXME: vérifier qu'on déborde pas
+            int new_x = x + (int)(Math.random() * 3) - 1;
+            int new_y = y + (int)(Math.random() * 3) - 1;
+            while (!sim.getTerrain().sontValides(new_y,new_x)) {
+                new_x = x + (int)(Math.random() * 3) - 1;
+                new_y = y + (int)(Math.random() * 3) - 1;
+            }
+            super.seDeplacer(new_x,new_y); //FIXME: vérifier qu'on déborde pas
         
         } else {
 
