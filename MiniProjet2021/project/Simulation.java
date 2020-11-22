@@ -5,7 +5,7 @@ class Simulation{
     private Terrain map;
     public ArrayList<Cellules> cel;
     private Organe[] org;
-    private Ressource[] ress;
+    private ArrayList<Ressource> ress;
     private int nbRessource;
 
     //lance les methode d'initialisation de 
@@ -50,17 +50,17 @@ class Simulation{
 
     public void initRessource(Random rnd, Terrain t){
         int ressourceStart = (int)((rnd.nextInt(NBRESSOURCESMAX) + 1)/2);
+        ress = new ArrayList<Ressource>();
         boolean success;
-        int x,y;
-        ress = new Ressource[NBRESSOURCESMAX];
-        // ress[1] = new Ressource("O2", rnd.nextInt(3) + 1);
+        Ressource tmpR;
+        int x, y;
         System.out.println("nb ressource start : " + ressourceStart);
         for (int i = 0; i < ressourceStart; i++){
             y = rnd.nextInt(t.nbLignes);
-             x = rnd.nextInt(t.nbColonnes);
-            ress[i] = new Ressource("O2", rnd.nextInt(3) + 1);
-            success = t.setCase(y, x, ress[i]);
-            System.out.println("("+x+", "+y+") : "+success);
+            x = rnd.nextInt(t.nbColonnes);
+            tmpR =new Ressource("O2", rnd.nextInt(3) + 1); 
+            ress.add(tmpR);
+            success = t.setCase(y, x, tmpR);
         // System.out.println(t.setCase(rnd.nextInt(t.nbLignes), rnd.nextInt(t.nbColonnes), ress[i]));
         }   
         // } catch(Exception e){
@@ -93,6 +93,7 @@ class Simulation{
         }
     }
 
+<<<<<<< Updated upstream
     public int[] getCoeurCoord() {
         return org[0].getCoord();
     }
@@ -107,4 +108,16 @@ class Simulation{
 
 
 
+=======
+    public add(Ressource newRessource){
+        if (map.caseEstVide(newRessource.getX(), newRessource.getY())){
+            ress.add(newRessource);
+            map.setCase(newRessource.getX(), newRessource.getY(), newRessource); 
+        }else{
+            Ressource tmp = map.getCase(newRessource.getX(), newRessource.getY());
+            tmp.setQuantite(tmp.getQuantite() )
+            
+        }
+    }
+>>>>>>> Stashed changes
 }
