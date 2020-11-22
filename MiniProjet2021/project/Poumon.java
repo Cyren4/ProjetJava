@@ -18,7 +18,7 @@ class Poumon extends Organe{
     }
 
     public void courir(){
-        debit += 10*pourcentageMap;
+        debit += 10 * pourcentageMap;
     }
 
     public void update(Simulation sim){
@@ -27,9 +27,7 @@ class Poumon extends Organe{
         int ajoutO2 = rnd.nextInt(debit);//quantite O2 ajouté aleatoirement
         
         for (int i = 0; i < ajoutO2; i++){
-            newRes = new Ressource("O2", rnd.nextInt(concO2));
-            newRes.setPosition(super.getX(), super.getY()); 
-            sim.add(newRes);
+            super.production("O2", sim, concO2);
         }
     }
 
