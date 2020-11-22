@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Cellule{
+abstract class Cellule{
     protected final String type;
     private static int cpt;
     protected int dureeVie;

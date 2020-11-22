@@ -110,7 +110,7 @@ class Simulation{
 
 
             for (Organe org_:org) {
-                //org_.update(this);
+                org_.update(this);
             }
             affiche();
         }
