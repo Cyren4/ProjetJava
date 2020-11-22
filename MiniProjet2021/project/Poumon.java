@@ -4,12 +4,13 @@ import java.util.*;
 //et injecte de l'O2 dans l'organisme 
 class Poumon extends Organe{
     public static final double pourcentageMap = 0.2;//poucentage de map a ajouter O2
-    public static final int concO2;//concentration O2 = quantite d'O2 ajouter par ressource
+    public final int concO2;//concentration O2 = quantite d'O2 ajouter par ressource
     public int debit;
 
     public Poumon(Terrain map){
         super("Poumon", map);
         debit = map.nbColonnes * map.nbLignes <= 0 ? 1 : (int)(map.nbColonnes * map.nbLignes * pourcentageMap);
+        concO2 = 4;
     }
 
     public void fumer(){

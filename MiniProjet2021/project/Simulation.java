@@ -107,7 +107,7 @@ class Simulation{
             map.setCase(newRessource.getX(), newRessource.getY(), newRessource);
         } else {
             Ressource tmp = map.getCase(newRessource.getX(), newRessource.getY());
-            if (nbRessource.type.equals(tmp.type))
+            if (newRessource.type.equals(tmp.type))
                 tmp.setQuantite(tmp.getQuantite() + newRessource.getQuantite());
         }
     }
