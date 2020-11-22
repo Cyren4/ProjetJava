@@ -59,12 +59,23 @@ class Globine extends Cellule{
 
         Ressource res =  sim.getTerrain().getCase(y,x);
         if (res != null) {
-            if (res.type == "O2" && transporte_ressource == 1
-                || res.type == "CO2" && transporte_ressource == 3) {
+            if (transporte_ressource == 0) {
+                if (res.type == "O2") transporte_ressource = 1;
+                if (res.type == "CO2") transporte_ressource = 2;
+                if (nb_transporte + res.getQuantite() < capaciteTransp) {
+                    nb_transporte += res.getQuantite();
+                    sim.remove(res);
+                }
+
+            } else if (res.type == "O2" && transporte_ressource == 1
+                || res.type == "CO2" && transporte_ressource == 2) {
                 
                 if (nb_transporte + res.getQuantite() < capaciteTransp) {
                     nb_transporte += res.getQuantite();
                     sim.remove(res);
+                } else {
+                    res.setQuantite(res.getQuantite() - (capaciteTransp - nb_transporte)); //La globine se remplit au max, et laisse le reste sur place.
+                    nb_transporte = capaciteTransp;
                 }
             }
         }
