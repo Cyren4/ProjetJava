@@ -61,11 +61,7 @@ class Simulation{
             tmpR =new Ressource("O2", rnd.nextInt(3) + 1); 
             ress.add(tmpR);
             success = t.setCase(y, x, tmpR);
-        // System.out.println(t.setCase(rnd.nextInt(t.nbLignes), rnd.nextInt(t.nbColonnes), ress[i]));
         }   
-        // } catch(Exception e){
-            // new RuntimeException(e);
-        // }
     }
 
     private void initCellule(Random rnd) {
@@ -111,7 +107,8 @@ class Simulation{
             map.setCase(newRessource.getX(), newRessource.getY(), newRessource);
         }else{
             Ressource tmp = map.getCase(newRessource.getX(), newRessource.getY());
-            tmp.setQuantite(tmp.getQuantite() + newRessource.getQuantite());
+            if (nbRessource.type.equals(tmp.type))
+                tmp.setQuantite(tmp.getQuantite() + newRessource.getQuantite());
         }
     }
 
