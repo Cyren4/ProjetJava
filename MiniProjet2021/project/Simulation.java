@@ -75,6 +75,18 @@ class Simulation{
     }
 
     public boolean pasFini() {
+        int o2 = 0;
+        int co2 = 0;
+        for (Ressource res: ress) {
+            if (res.type.equals("O2")) {
+                o2 += res.getQuantite();
+            } else {
+                co2 += res.getQuantite();
+            }
+        }
+        if (co2 > o2) {
+            return false;
+        }
         return true;
     }
 
