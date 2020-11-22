@@ -93,7 +93,6 @@ class Simulation{
         }
     }
 
-<<<<<<< Updated upstream
     public int[] getCoeurCoord() {
         return org[0].getCoord();
     }
@@ -108,16 +107,14 @@ class Simulation{
 
 
 
-=======
     public add(Ressource newRessource){
         if (map.caseEstVide(newRessource.getX(), newRessource.getY())){
             ress.add(newRessource);
             map.setCase(newRessource.getX(), newRessource.getY(), newRessource); 
         }else{
             Ressource tmp = map.getCase(newRessource.getX(), newRessource.getY());
-            tmp.setQuantite(tmp.getQuantite() )
+            tmp.setQuantite(tmp.getQuantite())
             
         }
     }
->>>>>>> Stashed changes
 }

@@ -17,13 +17,9 @@ class Organe{
     public String toString(){
         return nom + ": [" + y + ", " + x + "]";
     }
-<<<<<<< Updated upstream
 
     public int[] getCoord() {
         int[] res = {x,y};
         return res;
     }
-
-=======
->>>>>>> Stashed changes
 }
