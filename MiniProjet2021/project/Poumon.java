@@ -23,10 +23,23 @@ class Poumon extends Organe{
 
     public void update(Simulation sim){
         Random rnd = new Random();
-        int ajoutO2 = rnd.nextInt(debit);
+        Ressource newRes;
+        int ajoutO2 = rnd.nextInt(debit);//quantite O2 ajouté aleatoirement
+        
         for (int i = 0; i < ajoutO2; i++){
+<<<<<<< Updated upstream
             sim.add(new Ressource("O2", rnd.nextInt(concO2)));
+=======
+            newRes = new Ressource("O2", rnd.nextInt(concO2);
+            newRes.setPosition(super.getX(), super.getY()); 
+            sim.add(newRes);
+>>>>>>> Stashed changes
         }
+    }
+
+    public int[] closeCoord(Terrain){
+        int[] close = new int[2];
+        return close;
     }
 
     public String toString(){

@@ -18,6 +18,14 @@ class Organe{
         return nom + ": [" + y + ", " + x + "]";
     }
 
+    public int getX(){
+        return x;
+    }
+
+    public int getY(){
+        return y;
+    }
+
     public int[] getCoord() {
         int[] res = {x,y};
         return res;
