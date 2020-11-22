@@ -72,4 +72,16 @@ class Simulation{
         org[0] = new Coeur(t);
         org[1] = new Poumon(t);
     }
+
+    public void simulate() {
+        while (pasFini()) {
+            for (Cellules cellule :cel) {
+                cellule.update(this);
+            }
+            for (Organes org_:org) {
+                org_.update(this);
+            }
+        }
+    }
+
 }
