@@ -11,10 +11,6 @@ class Globine extends Cellule{
         capaciteTransp = rnd.nextInt(5) + 1;
     }
 
-    public Globine(Terrain t, int y, int x){
-        this(t);
-        super.seDeplacer(y, x);
-    }
 
     public void update(Simulation sim) {
         super.update(sim);
@@ -29,7 +25,7 @@ class Globine extends Cellule{
             int[] coords;
             if (transporte_ressource == 1) { // O2
                 coords =  sim.getCoeurCoord();
-            } else if (transporte_ressource == 2) { //CO2
+            } else  { //CO2
                 coords = sim.getPoumonCoord();
             }
             int dx = x - coords[0];
@@ -53,10 +49,8 @@ class Globine extends Cellule{
 
             if (x == coords[0] && y == coords[1]) { //
                 if (transporte_ressource == 1) {
-                    //TODO : rajouter l'oxygène dans le coeur
+                    sim.getCoeur().oxygenate(nb_transporte);
 
-                } else {
-                    //TODO : vider le CO2
                 }
                 transporte_ressource = 0;
                 nb_transporte = 0;

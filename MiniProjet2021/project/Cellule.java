@@ -1,7 +1,7 @@
 import java.util.*;
 
 class Cellule{
-    private final String type;
+    protected final String type;
     private static int cpt;
     protected int dureeVie;
     protected int y;//ligne
@@ -15,6 +15,14 @@ class Cellule{
         x = rnd.nextInt(t.nbColonnes);
         cpt++;
     }
+
+    public Cellule(String type, int dureeVie , int y, int x){
+        this.type = type;
+        this.dureeVie = dureeVie;
+        this.y = y;
+        this.x = x;
+    }
+
 
     public boolean estMort(){
         return dureeVie <= 0;

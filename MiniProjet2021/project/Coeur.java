@@ -11,8 +11,12 @@ class Coeur extends Organe{
     public void update(Simulation sim){
         if (capacite == nbO2){ 
             super.production("CO2", sim, 5);
-            sim.cel.add(new Globine(sim.getTerrain(), super.x, super.y));
+            sim.add(new Globine(sim.getTerrain(), super.x, super.y));
         }
+    }
+
+    public void oxygenate(int nb) {
+        nbO2 += nb;
     }
 
 }

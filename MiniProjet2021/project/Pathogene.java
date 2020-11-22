@@ -7,8 +7,12 @@ class Pathogene extends Cellule{
         ressourceAvale = 0;
     }
 
+    public Pathogene(String type, int x, int y) {
+        super(type,20,y,x);
+    }
+
     public Pathogene clone(){
-        return new Pathogene(type, t);
+        return new Pathogene(type, x, y);
     }
 
 
