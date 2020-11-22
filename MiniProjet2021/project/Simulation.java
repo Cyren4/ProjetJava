@@ -82,6 +82,20 @@ class Simulation{
     public boolean pasFini() {
         int o2 = 0;
         int co2 = 0;
+        for (int i=0;i<map.nbLignes;i++) {
+            for (int j=0;j<map.nbColonnes;j++) {
+                if (map.getCase(i,j) != null) {
+                    if (map.getCase(i,j).type.equals("O2")) {
+                        o2 += map.getCase(i,j).getQuantite();
+                    } else {
+                        co2 += map.getCase(i,j).getQuantite();
+                    }
+                }
+            }
+        }
+        System.err.println("" + co2 + " " + o2);
+        o2 = 0;
+        co2 = 0;
         for (Ressource res: ress) {
             if (res.type.equals("O2")) {
                 o2 += res.getQuantite();
@@ -89,6 +103,7 @@ class Simulation{
                 co2 += res.getQuantite();
             }
         }
+        System.err.println("" + co2 + " " + o2);
         if (co2 > o2) {
             return false;
         }

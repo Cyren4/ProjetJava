@@ -42,19 +42,18 @@ class Globine extends Cellule{
             int dy = y - coords[1];
             int mv_x,mv_y;
             if (dx > 0) 
-                mv_x = 1;
-            else if (dx < 0)
                 mv_x = -1;
+            else if (dx < 0)
+                mv_x = 1;
             else
                 mv_x = 0;
 
             if (dy > 0)
-                mv_y = 1;
-            else if (dy < 0)
                 mv_y = -1;
+            else if (dy < 0)
+                mv_y = 1;
             else
                 mv_y = 0;
-
             super.seDeplacer(x+mv_x, y+mv_y);
 
             if (x == coords[0] && y == coords[1]) { //

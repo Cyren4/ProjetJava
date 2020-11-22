@@ -32,8 +32,10 @@ class Pathogene extends Cellule{
         Ressource res =  sim.getTerrain().getCase(y,x);
         if (res != null && res.type == "O2") {
             Ressource tmp = new Ressource("CO2",res.getQuantite());
-            sim.remove(res);
+            
+            tmp.setPosition(res.getY(),res.getX());
             sim.add(tmp);
+            sim.remove(res);
             ressourceAvale += tmp.getQuantite();
             if (ressourceAvale >= RESSOURCE_AVANT_CLONE) {
                 Pathogene new_pat = this.clone();
