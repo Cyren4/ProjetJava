@@ -6,6 +6,8 @@ class Simulation{
     public ArrayList<Cellule> cel;
     private Organe[] org;
     private ArrayList<Ressource> ress;
+    private ArrayList<Cellule> temp_add;
+    private ArrayList<Cellule> temp_remove;
     private int nbRessource;
 
     //lance les methode d'initialisation de 
@@ -95,9 +97,17 @@ class Simulation{
 
     public void simulate() {
         while (pasFini()) {
+            temp_add = new ArrayList<Cellule>();
+            temp_remove = new ArrayList<Cellule>();
             for (Cellule cellule :cel) {
                 cellule.update(this);
             }
+            for (Cellule cellule:temp_remove) {
+                cel.remove(cellule);
+            }
+            cel.addAll(temp_add);
+
+
             for (Organe org_:org) {
                 //org_.update(this);
             }
@@ -135,7 +145,7 @@ class Simulation{
     }
 
     public void add(Cellule newCell) {
-        cel.add(newCell);
+        temp_add.add(newCell);
     }
      
     public void remove(Ressource oldRess){
@@ -143,7 +153,7 @@ class Simulation{
     }
 
     public void remove(Cellule oldCel){
-        cel.remove(oldCel);
+        temp_remove.add(oldCel);
     }
 
     public void affiche() {
