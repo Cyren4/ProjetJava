@@ -25,7 +25,7 @@ class Poumon extends Organe{
         Random rnd = new Random();
         int ajoutO2 = rnd.nextInt(debit);
         for (int i = 0; i < ajoutO2; i++){
-            sim.ress.add(new Ressource("O2", rnd.nextInt(concO2)));
+            sim.add(new Ressource("O2", rnd.nextInt(concO2)));
         }
     }
 
