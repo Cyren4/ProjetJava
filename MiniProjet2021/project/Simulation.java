@@ -105,23 +105,15 @@ class Simulation{
         return map;
     }
 
-<<<<<<< Updated upstream
 
 
-=======
->>>>>>> Stashed changes
     public void add(Ressource newRessource){
         if (map.caseEstVide(newRessource.getX(), newRessource.getY())){
             ress.add(newRessource);
             map.setCase(newRessource.getX(), newRessource.getY(), newRessource); 
         }else{
             Ressource tmp = map.getCase(newRessource.getX(), newRessource.getY());
-<<<<<<< Updated upstream
-            tmp.setQuantite(tmp.getQuantite());
-            
-=======
             tmp.setQuantite(tmp.getQuantite() + newRessource.getQuantite());
->>>>>>> Stashed changes
         }
     }
      

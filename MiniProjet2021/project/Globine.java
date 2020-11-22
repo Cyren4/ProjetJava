@@ -6,7 +6,7 @@ class Globine extends Cellules{
     private int nb_transporte;
 
     public Globine(Terrain t){
-        super("Globule rouge", 3, t);
+        super("Globule rouge", 20, t);
         Random rnd = new Random();
         capaciteTransp = rnd.nextInt(5) + 1;
     }
