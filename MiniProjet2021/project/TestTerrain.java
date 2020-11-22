@@ -59,7 +59,7 @@ public class TestTerrain {
 		if (etaitDansLaCase == null)
 			System.out.println("La case était déjà vide.");
 		else 
-			System.out.println("La case contenait : "+etaitDansLaCase);
+			System.out.println("La case contenait : "+ etaitDansLaCase);
 		
 		// Affichage du terrain avec les ressources ajoutées
 		t.affiche();

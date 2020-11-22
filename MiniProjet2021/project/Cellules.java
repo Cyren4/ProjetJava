@@ -30,7 +30,6 @@ class Cellules{
     public void seDeplacer(int xnew, int ynew){
         x = xnew;
         y = ynew;
-
     }
 
     public void update(Simulation sim) {

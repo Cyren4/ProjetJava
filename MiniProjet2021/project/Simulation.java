@@ -105,8 +105,6 @@ class Simulation{
         return map;
     }
 
-
-
     public void add(Ressource newRessource){
         if (map.caseEstVide(newRessource.getX(), newRessource.getY())){
             ress.add(newRessource);
