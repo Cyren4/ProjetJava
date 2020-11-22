@@ -22,8 +22,9 @@ public class TestTerrain {
 		
 		// On créé une ressource
 		Ressource e1 = new Ressource("Miel",5);
+		e1.setPosition(-1,5);
 		// et on la place sur le terrain
-		if (t.setCase(2,3,e1))
+		if (t.setCase(e1.getX(),e1.getY(),e1))
 			System.out.println("Ajout de " +e1+" valide !");
 		else
 			System.out.println("Ajout incorrect: problème de coordonnées !");

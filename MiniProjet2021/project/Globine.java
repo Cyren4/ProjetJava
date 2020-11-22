@@ -11,9 +11,10 @@ class Globine extends Cellule{
         capaciteTransp = rnd.nextInt(5) + 1;
     }
 
-    /*public Globine clone(){
-        return new Globine(t);
-    }*/
+    public Globine(Terrain t, int y, int x){
+        this(t);
+        super.seDeplacer(y, x);
+    }
 
     public void update(Simulation sim) {
         super.update(sim);

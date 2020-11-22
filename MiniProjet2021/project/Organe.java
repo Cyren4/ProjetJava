@@ -18,6 +18,13 @@ class Organe{
         return nom + ": [" + y + ", " + x + "]";
     }
 
+    public void production(String nom, Simulation sim, int quantite){
+        Random rnd = new Random();
+        newRes = new Ressource(nom, quantite);
+        newRes.setPosition(rnd.nextInt(sim.map.nbLignes) , rnd.nextInt(map.nbColonnes)); 
+        sim.add(newRes);
+    }
+
     public int getX(){
         return x;
     }
