@@ -92,11 +92,12 @@ class Simulation{
         if (co2 > o2) {
             return false;
         }
-        return true;
+        return (cel.size() != 0);
     }
 
     public void simulate() {
-        while (pasFini()) {
+        int n = 0;
+        while (pasFini() && n < 1000) {
             temp_add = new ArrayList<Cellule>();
             temp_remove = new ArrayList<Cellule>();
             for (Cellule cellule :cel) {
@@ -109,7 +110,7 @@ class Simulation{
 
 
             for (Organe org_:org) {
-                //org_.update(this);
+                org_.update(this);
             }
             affiche();
         }

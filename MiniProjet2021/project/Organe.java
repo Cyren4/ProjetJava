@@ -1,6 +1,6 @@
 import java.util.*; //need Random and Scanner
 
-class Organe{
+abstract class Organe{
     public final String nom;
     public final int x;
     public final int y;
@@ -12,7 +12,7 @@ class Organe{
         y = rnd.nextInt(t.nbLignes);
     }
 
-    public void update(){}
+    abstract public void update(Simulation sim);
 
     public String toString(){
         return nom + ": [" + y + ", " + x + "]";

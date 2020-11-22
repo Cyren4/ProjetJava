@@ -90,4 +90,16 @@ class Globine extends Cellule{
             }
         }
     }
+
+    public String toString() {
+        String s;
+        if (transporte_ressource == 0) {
+            s = "";
+        } else if (transporte_ressource == 1) {
+            s = "  O2 (" + nb_transporte+")";
+        } else {
+            s = "  CO2 (" + nb_transporte + ")";
+        }
+        return super.toString() + s;
+    }
 }
