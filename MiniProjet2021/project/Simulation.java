@@ -3,7 +3,7 @@ import java.util.*; //need Random and Scanner and ArrayList
 class Simulation{
     public final int NBRESSOURCESMAX; //nb max de ressources sur le terrain
     private Terrain map;
-    public ArrayList<Cellules> cel;
+    public ArrayList<Cellule> cel;
     private Organe[] org;
     private ArrayList<Ressource> ress;
     private int nbRessource;
@@ -69,7 +69,7 @@ class Simulation{
     }
 
     private void initCellule(Random rnd) {
-        cel = new ArrayList<Cellules>();
+        cel = new ArrayList<Cellule>();
     }
 
     public void initOrgane(Terrain t){
@@ -84,7 +84,7 @@ class Simulation{
 
     public void simulate() {
         while (pasFini()) {
-            for (Cellules cellule :cel) {
+            for (Cellule cellule :cel) {
                 cellule.update(this);
             }
             for (Organe org_:org) {
@@ -110,19 +110,22 @@ class Simulation{
     public void add(Ressource newRessource){
         if (map.caseEstVide(newRessource.getX(), newRessource.getY())){
             ress.add(newRessource);
-            map.setCase(newRessource.getX(), newRessource.getY(), newRessource); 
+            map.setCase(newRessource.getX(), newRessource.getY(), newRessource);
         }else{
             Ressource tmp = map.getCase(newRessource.getX(), newRessource.getY());
             tmp.setQuantite(tmp.getQuantite() + newRessource.getQuantite());
         }
+    }
+
+    public void add(Cellle newCell) {
+        cel.add(newCell);
     }
      
     public void remove(Ressource oldRess){
         ress.remove(map.videCase(oldRess.getX(), oldRess.getY()));
     }
 
-    public void remove(Cellules oldCel){
+    public void remove(Cellule oldCel){
         cel.remove(oldCel);
     }
-        
 }
