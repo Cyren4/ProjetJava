@@ -36,6 +36,7 @@ class Cellule{
     //xnew:nouvelle colonne
     //ynew:nouvelle ligne 
     public void seDeplacer(int xnew, int ynew){
+        //System.out.println(""+this+" "+xnew+","+ynew);
         x = xnew;
         y = ynew;
 
