@@ -16,8 +16,8 @@ class Cellules{
         cpt++;
     }
 
-    public bool estMort(){
-        return dureeVie <= 0
+    public boolean estMort(){
+        return dureeVie <= 0;
     }
 
 
@@ -27,10 +27,17 @@ class Cellules{
 
     //xnew:nouvelle colonne
     //ynew:nouvelle ligne 
-    public void seDeplacer(int xnew, int ynew){
+    /*public void seDeplacer(int xnew, int ynew){
         if (!freeze){
             x = xnew;
             y = ynew;
+        }
+    }*/
+
+    public void update(Simulation sim) {
+        dureeVie--;
+        if (estMort()) {
+            sim.cel.remove(this);
         }
     }
 }

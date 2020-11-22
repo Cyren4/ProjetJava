@@ -3,7 +3,7 @@ import java.util.*; //need Random and Scanner
 class Simulation{
     public final int NBRESSOURCESMAX; //nb max de ressources sur le terrain
     private Terrain map;
-    // private Cellules[] cel;
+    public ArrayList<Cellules> cel;
     private Organe[] org;
     private Ressource[] ress;
     private int nbRessource;
@@ -23,6 +23,7 @@ class Simulation{
         map.affiche(); 
         System.out.printf(map.toString());
         System.out.println("\n" + org[0].toString() + "\n" + org[1].toString());
+
     }
 
     public Terrain initTerrain(Scanner sc, Random rnd){
@@ -67,10 +68,18 @@ class Simulation{
         // }
     }
 
+    private void initCellule(Random rnd) {
+        cel = new ArrayList<Cellules>();
+    }
+
     public void initOrgane(Terrain t){
         org = new Organe[2];
         org[0] = new Coeur(t);
         org[1] = new Poumon(t);
+    }
+
+    public boolean pasFini() {
+        return true;
     }
 
     public void simulate() {
@@ -78,8 +87,8 @@ class Simulation{
             for (Cellules cellule :cel) {
                 cellule.update(this);
             }
-            for (Organes org_:org) {
-                org_.update(this);
+            for (Organe org_:org) {
+                //org_.update(this);
             }
         }
     }
