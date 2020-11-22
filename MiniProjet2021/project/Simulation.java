@@ -147,8 +147,6 @@ class Simulation{
         return (Coeur) org[0];
     }
 
-
-
     public void add(Ressource newRessource){
         if (map.caseEstVide(newRessource.getX(), newRessource.getY())){
             ress.add(newRessource);
