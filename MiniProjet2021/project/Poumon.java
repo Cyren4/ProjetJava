@@ -5,7 +5,7 @@ import java.util.*;
 class Poumon extends Organe{
     public static final double POURCENTAGE_MAP = 0.2;//poucentage de map a ajouter O2
     public final int concO2;//concentration O2 = quantite d'O2 ajouter par ressource
-    public int debit;
+    private int debit;
 
     public Poumon(Terrain map){
         super("Poumon", map);
