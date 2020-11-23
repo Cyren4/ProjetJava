@@ -13,14 +13,6 @@ class Poumon extends Organe{
         concO2 = 4;
     }
 
-    public void fumer(){
-        if (debit > 0)
-            debit--;
-    }
-
-    public void courir(){
-        debit += 10 * POURCENTAGE_MAP;
-    }
 
     public void update(Simulation sim){
         Random rnd = new Random();
