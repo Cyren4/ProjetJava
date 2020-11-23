@@ -35,8 +35,6 @@ class Simulation{
             throw new RuntimeException("Error on log file");
         }
 
-
-
     }
 
     public Terrain initTerrain(Scanner sc, Random rnd){
@@ -233,6 +231,4 @@ class Simulation{
 
         file.println("" + n + " " + o2 + " "+co2+" "+glob+" "+path);
     }
-
-
 }
