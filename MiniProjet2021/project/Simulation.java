@@ -4,7 +4,7 @@ import java.io.*;
 class Simulation{
     public final int NBRESSOURCESMAX; //nb max de ressources sur le terrain
     private Terrain map;
-    public ArrayList<Cellule> cel;
+    private ArrayList<Cellule> cel;
     private Organe[] org;
     private ArrayList<Ressource> ress;
     private ArrayList<Cellule> temp_add;

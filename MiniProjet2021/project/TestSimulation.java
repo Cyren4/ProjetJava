@@ -68,7 +68,7 @@ class TestSimulation{
     }
 
     //permet de choisir si on veut ou non commencer la simulation
-    public static int Start(Scanner sc){
+    public static int start(Scanner sc){
         System.out.printf("Which simulation do you want?\n");
         System.out.printf("\t1. La vie ~\n");
         System.out.printf("\t2. Information\n");
@@ -90,7 +90,7 @@ class TestSimulation{
 
     public static void main(String args[]){
         Scanner sc = new Scanner(System.in);
-        int jeu = Start(sc);
+        int jeu = start(sc);
         System.out.printf("Welcome!\n\n");
 
         if (jeu == 1 ) {
