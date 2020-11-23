@@ -39,9 +39,6 @@ class TestSimulation{
         Scanner sc = new Scanner(System.in);
         int jeu = Start(sc);
 
-        while ((jeu = info(sc)) < 4 && jeu > 1){
-            jeu =
-        }
         if (jeu == 1 ) {
             Simulation s = new Simulation(sc);
             s.simulate();
