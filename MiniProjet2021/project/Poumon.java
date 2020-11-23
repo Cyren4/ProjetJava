@@ -24,7 +24,7 @@ class Poumon extends Organe{
 
     public void update(Simulation sim){
         Random rnd = new Random();
-        int ajoutO2 = rnd.nextInt(debit);//quantite O2 ajouté aleatoirement
+        int ajoutO2 = rnd.nextInt(debit+1);//quantite O2 ajouté aleatoirement
         
         for (int i = 0; i < ajoutO2; i++){
             super.production("O2", sim, concO2);

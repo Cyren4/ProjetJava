@@ -2,26 +2,26 @@ import java.util.*;
 
 abstract class Cellule{
     protected final String type;
-    private static int cpt;
+    private static int cpt=0;
     protected int dureeVie;
     protected int y;//ligne
     protected int x;//colonne
+    private int id;
 
-    public Cellule(String type, int dureeVie, Terrain t){
-        Random rnd = new Random();
-        this.type = type; 
-        this.dureeVie = dureeVie;
-        y = rnd.nextInt(t.nbLignes);
-        x = rnd.nextInt(t.nbColonnes);
-        cpt++;
-    }
-
-    public Cellule(String type, int dureeVie , int x, int y){
+    public Cellule(String type, int dureeVie , int y, int x){
         this.type = type;
         this.dureeVie = dureeVie;
         this.y = y;
         this.x = x;
+        id = cpt++;
     }
+
+
+
+    public Cellule(String type, int dureeVie, Terrain t){
+        this(type,dureeVie,(int)(Math.random()*t.nbLignes),(int)(Math.random() * t.nbColonnes));
+    }
+
 
 
     public boolean estMort(){
@@ -50,6 +50,6 @@ abstract class Cellule{
     }
 
     public String toString() {
-        return type + " : [" + y + "," + x + "]";
+        return type + "("+id+") : [" + y + "," + x + "]";
     }
 }

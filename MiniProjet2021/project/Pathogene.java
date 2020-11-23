@@ -12,7 +12,7 @@ class Pathogene extends Cellule{
     }
 
     public Pathogene clone(){
-        return new Pathogene(type, x, y);
+        return new Pathogene(super.type, this.x, this.y);
     }
 
 
@@ -31,6 +31,9 @@ class Pathogene extends Cellule{
 
         Ressource res =  sim.getTerrain().getCase(y,x);
         if (res != null && res.type == "O2") {
+            if (res.getQuantite() == 0) {
+                throw new RuntimeException("test");
+            }
             Ressource tmp = new Ressource("CO2",res.getQuantite());
             
             tmp.setPosition(res.getY(),res.getX());

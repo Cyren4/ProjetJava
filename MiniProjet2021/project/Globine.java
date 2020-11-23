@@ -79,7 +79,7 @@ class Globine extends Cellule{
             } else if (res.type == "O2" && transporte_ressource == 1
                 || res.type == "CO2" && transporte_ressource == 2) {
                 
-                if (nb_transporte + res.getQuantite() < capaciteTransp) {
+                if (nb_transporte + res.getQuantite() <= capaciteTransp) {
                     nb_transporte += res.getQuantite();
                     sim.remove(res);
                 } else {

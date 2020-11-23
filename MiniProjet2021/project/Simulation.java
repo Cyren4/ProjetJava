@@ -30,7 +30,7 @@ class Simulation{
         System.out.println("\n" + org[0].toString() + "\n" + org[1].toString());
 
         try {
-            file = new PrintWriter("nom.log", "UTF-8");
+            file = new PrintWriter("simulation.log", "UTF-8");
         } catch(Exception e) {
             throw new RuntimeException("Error on log file");
         }
@@ -80,7 +80,9 @@ class Simulation{
     private void initCellule() {
         cel = new ArrayList<Cellule>();
         cel.add(new Pathogene("Bactérie",map));
-        cel.add(new Globine(map));
+        for (int i=0;i<100;i++) {
+            cel.add(new Globine(map));
+        }
     }
 
     public void initOrgane(Terrain t){
@@ -138,29 +140,27 @@ class Simulation{
             for (Cellule cellule :cel) {
                 cellule.update(this);
             }
-            for (Cellule cellule:temp_remove) {
-                cel.remove(cellule);
-            }
-            cel.addAll(temp_add);
-
-
             for (Organe org_:org) {
                 org_.update(this);
             }
+
+            for (Cellule cellule:temp_remove) {
+                cel.remove(cellule);
+            }
+            System.out.println(temp_add.size());
+            for (Cellule cellule:temp_add) {
+                cel.add(cellule);
+            }
+            //cel.addAll(temp_add);
+
+
+
             affiche();
             log(n);
             n++;
+            System.out.println("\n\n");
         }
         file.close();
-        try {
-            Runtime rt = Runtime.getRuntime();
-            rt.exec("plot nom.log using 1:2 with lines title o2");
-            rt.exec("replot nom.log using 1:3 with lines title co2");
-            rt.exec("replot nom.log using 1:4 with lines title globine");
-            rt.exec("replot nom.log using 1:5 with lines title Pathogene");
-        } catch(Exception e) {
-            throw new RuntimeException("Error on plotting");
-        }
     }
 
     public int[] getCoeurCoord() {
