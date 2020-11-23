@@ -13,7 +13,7 @@ class Information{
        System.out.println("2. Pose aleatoire des ressources");
        System.out.println("3. Creation d'Organes (Coeur, Poumons) et Cellules (Globines, Pathogenes)");
        System.out.println("4. La simulation commence et on peut suivre le mouvement des Cellules grace aux logs.");
-       System.out.println("5. La situation se termine uniquement si le nombre de tour atteint le max ou si le nombre de CO2 excede celui de l'O2");
+       System.out.println("5. La situation se termine uniquement si le nombre de tour atteint le max ou si le nombre de CO2 excede celui de l'O2\n");
     }
 
     public static void organe(){
@@ -21,25 +21,25 @@ class Information{
 
     }
     public static void coeur(){
-       System.out.println("Le Coeur assure la circulation sanguine. Il recoit de l'O2 grace aux globines.\n"); 
-       System.out.println("Une fois un certain nombre d'O2 recut il produit de nouvelles globines et du CO2."); 
+       System.out.println("Le Coeur assure la circulation sanguine. Il recoit de l'O2 grace aux globines."); 
+       System.out.println("Une fois un certain nombre d'O2 recut il produit de nouvelles globines et du CO2.\n"); 
     }
 
     public static void poumon(){
        System.out.println("Le Poumon assure l'approvisionnement d'O2 dans le corps."); 
-       System.out.println("Il produit de l'O2 avec un certain debit et permet aux globines de les debarasser du CO2."); 
+       System.out.println("Il produit de l'O2 avec un certain debit et permet aux globines de les debarasser du CO2.\n"); 
     }
 
     public static void cellule(){
-       System.out.println("Les cellules sont des micro-organismes qui assure se déplace dans le corps humain. Ils peuvent etre benefique pour le corps."); 
+       System.out.println("Les cellules sont des micro-organismes qui assure se déplace dans le corps humain. Ils peuvent etre benefique pour le corps.\n"); 
     }
 
     public static void globine(){
-       System.out.println("Les globines sont des agents qui assurent l'acheminement des ressources entre les divers organes du corps humain."); 
+       System.out.println("Les globines sont des agents qui assurent l'acheminement des ressources entre les divers organes du corps humain.\n"); 
         
     }
 
     public static void pathogene(){
-       System.out.println("Les pathogenes sont des agents qui se nourissent des ressources et se multiplient. Ils transforment l'O2 en CO2"); 
+       System.out.println("Les pathogenes sont des agents qui se nourissent des ressources et se multiplient. Ils transforment l'O2 en CO2\n"); 
     }
 }
