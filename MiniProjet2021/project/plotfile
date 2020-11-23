@@ -1,0 +1,5 @@
+plot "simulation.log" using 1:2 with lines title "o2"
+set term dumb
+replot "simulation.log" using 1:3 with lines title "co2"
+plot "simulation.log" using 1:4 with lines title "globine"
+plot "simulation.log" using 1:5 with lines title "pathogenes"
