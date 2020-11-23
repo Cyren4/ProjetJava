@@ -98,6 +98,5 @@ class TestSimulation{
             s.simulate();
         } else
             System.out.println("You chose to quit the Simulation.\nSee you soon!");
-        
     }
 }
