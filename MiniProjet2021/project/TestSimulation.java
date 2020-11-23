@@ -80,7 +80,7 @@ class TestSimulation{
             int choice = sc.nextInt();
             if (choice == 2){
                 info(sc);
-                Start(sc);
+                start(sc);
             }
             return choice;
         } catch(Exception e){
