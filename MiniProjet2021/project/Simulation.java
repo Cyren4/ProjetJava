@@ -1,4 +1,5 @@
 import java.util.*; //need Random and Scanner and ArrayList
+import java.io.*;
 
 class Simulation{
     public final int NBRESSOURCESMAX; //nb max de ressources sur le terrain
@@ -9,6 +10,7 @@ class Simulation{
     private ArrayList<Cellule> temp_add;
     private ArrayList<Cellule> temp_remove;
     private int nbRessource;
+    private PrintWriter file; 
 
     //lance les methode d'initialisation de 
     //  Terrain
@@ -26,6 +28,14 @@ class Simulation{
         map.affiche(); 
         System.out.printf(map.toString());
         System.out.println("\n" + org[0].toString() + "\n" + org[1].toString());
+
+        try {
+            file = new PrintWriter("nom.log", "UTF-8");
+        } catch(Exception e) {
+            throw new RuntimeException("Error on log file");
+        }
+
+
 
     }
 
@@ -107,6 +117,16 @@ class Simulation{
         if (co2 > o2) {
             return false;
         }
+        boolean glob = false;
+        for (Cellule c:cel) {
+            if (c instanceof Globine) {
+                glob = true;
+                break;
+            }
+        }
+        /*if (!glob) {
+            return false;
+        }*/
         return (cel.size() != 0);
     }
 
@@ -128,6 +148,18 @@ class Simulation{
                 org_.update(this);
             }
             affiche();
+            log(n);
+            n++;
+        }
+        file.close();
+        try {
+            Runtime rt = Runtime.getRuntime();
+            rt.exec("plot nom.log using 1:2 with lines title o2");
+            rt.exec("replot nom.log using 1:3 with lines title co2");
+            rt.exec("replot nom.log using 1:4 with lines title globine");
+            rt.exec("replot nom.log using 1:5 with lines title Pathogene");
+        } catch(Exception e) {
+            throw new RuntimeException("Error on plotting");
         }
     }
 
@@ -177,6 +209,29 @@ class Simulation{
         for (Cellule cel_ : cel) {
             System.out.println(cel_);
         }
+    }
+
+    public void log(int n) {
+        int co2 = 0;
+        int o2 = 0;
+        for (Ressource res: ress) {
+            if (res.type.equals("O2")) {
+                o2 += res.getQuantite();
+            } else {
+                co2 += res.getQuantite();
+            }
+        }
+        int glob = 0;
+        int path = 0;
+        for (Cellule c:cel) {
+            if (c instanceof Globine) {
+                glob++;
+            } else {
+                path++;
+            }
+        }
+
+        file.println("" + n + " " + o2 + " "+co2+" "+glob+" "+path);
     }
 
 
