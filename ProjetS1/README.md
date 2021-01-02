@@ -52,47 +52,67 @@ Ajout d’un IA contre qui jouer (possibilité de programmer son ia pour en affr
 
 Classes :
 ---------
-
-[diagramme UML](http://www.plantuml.com/plantuml/uml/dP2nJW91441hvokcX91hh8q1YGN4n09ZOopcxkPmpDmkcPr52E7VHHQYHcsiBfUtRz_CZfEJUUuL93XRHmtZfEkaUQ5Q6NTmCLf7QR4rUXiyi1b9G1_27W0QfPHmpda7rJncplPq-OolK4tCQ7idoQzkI9MliORgv7w8qwDN39H-fTnpyFIzMqbmt9JF5ieGTSnBji4GHdMCoXImYQgI98R1iOJry3DmksbuvGUsYER2v-5vunpQBtYtFmcpi2QLTXPMsNyz1bGdDseSo-gb-QyDzkVdMyHCNQTy3fPB3x62ft4PoDe_wADqz_Q3mVZmctjz1m00)
-
+[diagramme UML]
+http://www.plantuml.com/plantuml/png/RLDDRvj043rtVyL8FIPMt0_rGbl5TPtORIHBWJJjSO0XsMgPjNONQXVvltTP42Ok5nRclNapysQvjWwDgqebCeNMmgFaNFy1sZlYtC8IkKOBpL68PS2_KNKEodAdg2Hs5kuhPamLGICklB2J6HIIKO5a1u-RhyaQFi6R-NmUmGHXlThShXFF-F1-7atWSRAuJ-BjmytDtSgptaNYbPWbpuOm1nUEICnIhHKXW_6jI7xol0AL9OyyMBh5ahRmZ9mhCf4GirQMqrXNHQ6eq-nZI_t4Q78VUpjIhMMnDJxcJEKblIkOMcSmSz3P5mgalya76l4wTBs_X4FKlzUaVbwspr_HrLKj7LbBuc8qeioZ5zzM_ktgTFB328rO68E7EsdTnrFDpw33UKhuJeSDxoetxCm75Zdk79b6pE1_IqwBrXLLPiWR3pPq63lJMiowVDcr8nn5bbff0zb8UxNFQEUavbWR9oaXOr3oK6k0csEViE4QbSp3A9EqypryGQLeklcJENxjM1GZNiXgVUckNfWb_1yGJPerAFMNvKpesAC_mgKvntfmmuKs9RPpW8zUUqvLgdy0
 
 ```uml
-Interface Affichable (implémenté par Joueur et Balle) :
-    void draw(Terrain t);
-
 @startuml
-interface Affichable {
-    +void draw(Terrain t)
+class Window extends Canvas {}
+
+Class Jeu extends Canvas implements Runnable {
++static final int WIDTH = 1000; 
++static final int HEIGHT = 640;
++static final int STARTSOUFFLE = 3;
+	
+-Thread thread;
+-boolean running = false;
+-UseGameO handler;
+
+-int nbSouffle = 3;
+-int nbCognard = 2;
+-boolean vifOr = true;
 }
 
-
-class Jeu{
--Joueur[2] j
--ArrayList<Balle> b
--Terrain
+abstract class GameObject {
+# int x, y;
+# int velX, velY;//vitesse
++ final int id;
++ final int size;
 }
 
-Class Joueur implements Affichable {
--int x
--int y
-+void bouger()
-+boolean collision(Balle b)
+class UseGameO {
+ArrayList<GameObject> object
+}
+
+class KeyInput extends KeyAdapter{
+- UseGameO handler;
+}
+
+Class Joueur extends GameObject {
++ final String nom;
++ final int team;
++ final Color c;
 }
 
 Class ExceptionSortieTerrain extends Exception{}
 Class InvalidInput extends Exception{}
 
-abstract class Balle implements Affichable {
--int x
--int y
-+void bouger()
+abstract class Balle extends GameObject {
+
 }
 
-class Souaffle extends Balle{}
+class Souaffle extends Balle{
+- static int start ;
+- UseGameO handler;
+}
+
 class Cognard extends Balle{}
 class VifOr extends Balle{}
 
-
-
+class Information {}
 @enduml
 ```
+
+Old Version : 
+
+[diagramme UML](http://www.plantuml.com/plantuml/uml/dP2nJW91441hvokcX91hh8q1YGN4n09ZOopcxkPmpDmkcPr52E7VHHQYHcsiBfUtRz_CZfEJUUuL93XRHmtZfEkaUQ5Q6NTmCLf7QR4rUXiyi1b9G1_27W0QfPHmpda7rJncplPq-OolK4tCQ7idoQzkI9MliORgv7w8qwDN39H-fTnpyFIzMqbmt9JF5ieGTSnBji4GHdMCoXImYQgI98R1iOJry3DmksbuvGUsYER2v-5vunpQBtYtFmcpi2QLTXPMsNyz1bGdDseSo-gb-QyDzkVdMyHCNQTy3fPB3x62ft4PoDe_wADqz_Q3mVZmctjz1m00)
