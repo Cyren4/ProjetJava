@@ -34,7 +34,7 @@ public class Information {
 	    }
 	    
 	    public static void Field(){
-	    	 System.out.println("\nThe field is pretty wide"+ Terrain.HAUTEUR + " x " + Terrain.LARGEUR + "sq feet"+
+	    	 System.out.println("\nThe field is pretty wide"+ Jeu.WIDTH + " x " + Jeu.HEIGHT + "sq feet"+
 	    			 "Both teams Hoops to score are highlighted.");
 	    }
 	    public static void Quaffles(){
