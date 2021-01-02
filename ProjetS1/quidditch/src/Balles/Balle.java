@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import java.util.Random;
 import quidditch.*;
 
-public abstract class Balle extends GameObject implements Affichable {
+public abstract class Balle extends GameObject {
 //	private static int nbBalles;
 //	private boolean visible;
 	

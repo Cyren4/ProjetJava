@@ -20,15 +20,13 @@ import java.util.Random;
  */
 
 public class Joueur extends GameObject {
-	public static final int STARTX = Jeu.WIDTH;
-	public static final int STARTY = Jeu.HEIGHT / 2;
 	public final String nom;
 	public final int team;
 	public final Color c;
 	//ajout barre vie -> si on se fait toucher trop de fois par cognard = mort ? 
 
 	public Joueur(String nom, int team, Color c) {
-		super(team == 0 ? STARTX / 4 : STARTX * 3 / 4 , STARTY, team, 35);
+		super(team == 0 ? Jeu.WIDTH / 4 : Jeu.WIDTH * 3 / 4 , Jeu.HEIGHT / 2, team, 35);
 		this.nom = nom;
 		this.team = team;
 		this.c = c;
