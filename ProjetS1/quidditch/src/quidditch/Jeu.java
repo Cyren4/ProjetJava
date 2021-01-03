@@ -40,15 +40,17 @@ public class Jeu extends Canvas implements Runnable {
 		new Window(WIDTH, HEIGHT, "Quidditch Tournament!", this);
 		
 		startSouffle = nbBall[0];
+		System.out.println(startSouffle);
 		nbCognard = nbBall[1];
 		vifOr = nbBall[2] == 1;
-//		handler.addObject(new Joueur("Harry", 0, Color.red));
-//		handler.addObject(new Joueur("Drago", 1, Color.green));
+		
 		handler.addObject(j[0]);
 		handler.addObject(j[1]);
 		
-		for(int i = 0; i < startSouffle; i++)
-			handler.addObject(new Souffle(handler, NBSOUFFLE++));
+		for(int i = 0; i < startSouffle; i++) {
+			handler.addObject(new Souffle(handler, startSouffle));
+			NBSOUFFLE++;
+		}
 		for(int i = 0; i < nbCognard; i++)
 			handler.addObject(new Cognard());
 		if (vifOr)	handler.addObject(new VifOr());
@@ -109,8 +111,8 @@ public class Jeu extends Canvas implements Runnable {
 			
 			if (System.currentTimeMillis() - timer > 1000) {
 				timer+= 1000;
-				System.out.println("FPS :" + frames);
-				System.out.println("TPS :" + ticks);
+//				System.out.println("FPS :" + frames);
+//				System.out.println("TPS :" + ticks);
 				frames = 0;
 				ticks = 0;
 			}

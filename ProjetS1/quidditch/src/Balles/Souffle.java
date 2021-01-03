@@ -11,7 +11,7 @@ public class Souffle extends Balle{
 	
 	public Souffle(UseGameO handler, int nbStart) {
 		super((int)(Jeu.WIDTH/2), calculPlace(nbStart), 2, 35);
-
+		System.out.println("nbStart souaffls : " + nbStart + "\nnbSouaffle" + Jeu.NBSOUFFLE +"\nyStart : "+ calculPlace(nbStart));
 //		start += Jeu.NBSOUFFLE == 3 ? 200 : 125;
 		this.handler = handler;
 		
