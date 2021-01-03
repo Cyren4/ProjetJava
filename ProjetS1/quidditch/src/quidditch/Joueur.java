@@ -40,12 +40,6 @@ public class Joueur extends GameObject {
 	public void tick() {
 		x = Jeu.limit(x + velX, 0, Jeu.WIDTH-35);
 		y = Jeu.limit(y + velY, 0, Jeu.HEIGHT-60);
-		if ( y >= 180 && y <= 360 && this.id <=1)
-			if (x <= 10) {
-				System.out.println("GOALLL 1");
-			}
-			else if ( x >= Jeu.WIDTH - 50)
-				System.out.println("GOALLL 2");
 	}
 
 	@Override

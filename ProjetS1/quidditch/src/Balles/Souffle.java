@@ -35,6 +35,10 @@ public class Souffle extends Balle{
 			}
 	}
 
+	public void pousse(Joueur j) {
+		
+	}
+
 	public void render(Graphics g) {
 		super.render(g, Color.magenta);
 	}

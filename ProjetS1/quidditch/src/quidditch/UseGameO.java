@@ -18,7 +18,12 @@ import Balles.*;
 public class UseGameO {
 	ArrayList<GameObject> objects = new ArrayList<GameObject>();
 	
-	public void tick() { //update tous les gameObject
+
+	/**
+	* Cette méthode est appelé régulièrement, elle est responsable de faire évoluer l'état du jeu.
+	* Elle va donc appeler la méthode tick de chaque objet, et gérer les collisions.
+	*/
+	public void tick() {
 		for (int i = 0; i < objects.size(); i++) {
 			GameObject tmpObject = objects.get(i);
 			tmpObject.tick();
@@ -31,12 +36,12 @@ public class UseGameO {
 
 			if (o1 instanceof Joueur) {
 				if (o2 instanceof Souffle) {
-					//((Souffle) o2).pousse();
+					((Souffle) o2).pousse((Joueur)o1);
 				}
 			}
 			if (o1 instanceof Souffle) {
 				if (o2 instanceof Joueur) {
-					//((Souffle) o1).pousse();
+					((Souffle) o1).pousse((Joueur) o2);
 				}
 			}
 		}
@@ -49,14 +54,15 @@ public class UseGameO {
 		}
 	}
 
+	/**
+	* Retourne une liste de tout les couple d'objects qui sont en collision.
+	* (on considère que tout les objets sont des carrés pour plus de simplicité)
+	*/
 	public ArrayList<GameObject[]> collisions() {
-		/**
-		* Retourne une liste de couple d'objects qui sont en collision.
-		*/
 		ArrayList<GameObject[]> lst = new ArrayList<GameObject[]>();
 		for (int i=0; i < objects.size();i++) {
 			GameObject object = objects.get(i);
-			for (int j=i+1; j < objects.size(); j++) {
+			for (int j=i+1; j < objects.size(); j++) { //On ne teste que les objets derrières pour ne pas avoir deux fois les couples.
 				GameObject other_object = objects.get(j);
 				int diff_x_1 = Integer.signum(object.getX() - other_object.getX() - other_object.size);
 				int diff_x_2 = Integer.signum(object.getX() + object.size - other_object.getX());
@@ -64,7 +70,7 @@ public class UseGameO {
 				int diff_y_2 = Integer.signum(object.getY() + object.size - other_object.getY());
 				if ((diff_x_1 != diff_x_2 || diff_x_1 == 0) && (diff_y_1 != diff_y_2 || diff_y_1 == 0)) {
 					GameObject[] temp = {object,other_object};
-					lst.add(temp);
+					lst.add(temp); //On ne teste pas si object == other_object car la manière dont on fait la boucle garantie de ne pas avoir ce cas
 				}
 			}
 		}

@@ -9,8 +9,8 @@ public class Cognard extends Balle{
 	
 	public Cognard() {
 		super((int)(Math.random()*(Jeu.WIDTH - 25) + 20), (int)(Math.random()*(Jeu.HEIGHT-25)) + 20, 3, 25);
-		velX = 5;
-		velY = 5;
+		velX = 2;
+		velY = 2;
 	}
 	
 
