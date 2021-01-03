@@ -88,23 +88,31 @@ public class Jeu extends Canvas implements Runnable {
 		double ns = 1000000000/amountOfTicks;//nb de ns par tick (reduire --> augmente nb tick)
 		double delta = 0;//nb de temps qui s'est passe depuis derniere boucle
 		long timer = System.currentTimeMillis();
-		int frames = 0; //nb d'affichage par seconde
+		int frames = 0;
+		int ticks = 0;
+		boolean new_tick = true;
 		while (running) {
 			long now = System.nanoTime();
 			delta += (now - lastTime)/ ns;
 			lastTime = now;
 			while (delta >= 1) {//si jeu en cours on update
 				tick();
+				ticks++;
 				delta--;
+				new_tick = true;
 			}
-			if (running) //si jeu en cours on affiche
+			if (running && new_tick) {//si jeu en cours on affiche
 				render();
-			frames++;
+				frames++;
+				new_tick = false;
+			}
 			
 			if (System.currentTimeMillis() - timer > 1000) {
 				timer+= 1000;
 				System.out.println("FPS :" + frames);
+				System.out.println("TPS :" + ticks);
 				frames = 0;
+				ticks = 0;
 			}
 		}
 		stop();
