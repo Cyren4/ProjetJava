@@ -18,14 +18,14 @@ import java.io.*;
 public class Jeu extends Canvas implements Runnable {
 	public static final int WIDTH = 1000; 
 	public static final int HEIGHT = 640;
-	public static final int STARTSOUFFLE = 3;
+	public final int startSouffle;
 	
 	private Thread thread;
 	private boolean running = false;
 	private UseGameO handler;
 
-	private int nbSouffle = 3;
-	private int nbCognard = 2;
+	public static int NBSOUFFLE = 0;
+	private int nbCognard;
 	private boolean vifOr = true;
 //	private Terrain t;
 //	private ArrayList<Balle> bal;
@@ -34,25 +34,32 @@ public class Jeu extends Canvas implements Runnable {
 	
 	
 	
-	public Jeu(){
+	public Jeu(Joueur[] j, int[] nbBall){
 		handler  = new UseGameO();
 		this.addKeyListener(new KeyInput(handler));
 		new Window(WIDTH, HEIGHT, "Quidditch Tournament!", this);
 		
+		startSouffle = nbBall[0];
+		nbCognard = nbBall[1];
+		vifOr = nbBall[2] == 1;
+//		handler.addObject(new Joueur("Harry", 0, Color.red));
+//		handler.addObject(new Joueur("Drago", 1, Color.green));
+		handler.addObject(j[0]);
+		handler.addObject(j[1]);
 		
-	
-		handler.addObject(new Joueur("Harry", 0, Color.red));
-		handler.addObject(new Joueur("Drago", 1, Color.green));
-		
-		for(int i = 0; i < STARTSOUFFLE; i++)
-			handler.addObject(new Souffle(handler));
+		for(int i = 0; i < startSouffle; i++)
+			handler.addObject(new Souffle(handler, NBSOUFFLE++));
 		for(int i = 0; i < nbCognard; i++)
 			handler.addObject(new Cognard());
 		if (vifOr)	handler.addObject(new VifOr());
 	}
 
+	public int getNbStartSouffle() {
+		return startSouffle;
+	}
+	
 	public int getNbSouffle() {
-		return nbSouffle;
+		return NBSOUFFLE;
 	}
 
 	// start thread of game
@@ -78,8 +85,8 @@ public class Jeu extends Canvas implements Runnable {
 	public void run() {
 		long lastTime = System.nanoTime();
 		double amountOfTicks = 60.0;
-		double ns = 1000000000/amountOfTicks;
-		double delta = 0;
+		double ns = 1000000000/amountOfTicks;//nb de ns par tick (reduire --> augmente nb tick)
+		double delta = 0;//nb de temps qui s'est passe depuis derniere boucle
 		long timer = System.currentTimeMillis();
 		int frames = 0;
 		int ticks = 0;
@@ -141,6 +148,7 @@ public class Jeu extends Canvas implements Runnable {
 		bs.show();
 	}
 	
+	//empeche les joueurs de sortir du terrain
 	public static int limit(int x, int min, int max) {
 		if (x >= max) return max;
 		else if (x <= min) return min;

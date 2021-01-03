@@ -6,17 +6,21 @@ import java.util.Random;
 import quidditch.*;
 
 public class Souffle extends Balle{
-	private static int start = Jeu.STARTSOUFFLE == 3 ? 100 : 50 ;
+//	private static int start = nbSouffle == 3 ? 100 : 50 ;
 	private UseGameO handler;
 	
-	public Souffle(UseGameO handler) {
-		super((int)(Jeu.WIDTH/2), start, 2, 35);
-	
-		start += Jeu.STARTSOUFFLE == 3 ? 200 : 125;
+	public Souffle(UseGameO handler, int nbStart) {
+		super((int)(Jeu.WIDTH/2), calculPlace(nbStart), 2, 35);
+
+//		start += Jeu.NBSOUFFLE == 3 ? 200 : 125;
 		this.handler = handler;
 		
 	}
 	
+	private static int calculPlace(int nbStart) {
+		int implement = nbStart == 3 ? 200 : 125;
+		return nbStart == 3 ? 100 + Jeu.NBSOUFFLE * implement : 50 + Jeu.NBSOUFFLE * implement;
+	}
 	//faire interraction avec joueur
 	public void tick() {
 		// comment faire une vitesse decroissante ? aka force de frottement 
