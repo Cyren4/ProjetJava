@@ -6,13 +6,11 @@ import java.util.Random;
 import quidditch.*;
 
 public class Souffle extends Balle{
-//	private static int start = nbSouffle == 3 ? 100 : 50 ;
 	private UseGameO handler;
 	
 	public Souffle(UseGameO handler, int nbStart) {
 		super((int)(Jeu.WIDTH/2), calculPlace(nbStart), 2, 35);
 		System.out.println("nbStart souaffls : " + nbStart + "\nnbSouaffle" + Jeu.NBSOUFFLE +"\nyStart : "+ calculPlace(nbStart));
-//		start += Jeu.NBSOUFFLE == 3 ? 200 : 125;
 		this.handler = handler;
 		
 	}
