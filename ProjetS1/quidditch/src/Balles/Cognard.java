@@ -18,14 +18,7 @@ public class Cognard extends Balle{
 	public void tick() {
 		x += velX;
 		y += velY;
-		inside();
-	}
-	
-	public void inside() {
-		if(x <= 0 || x >= Jeu.WIDTH - this.size)
-			velX *= -1;
-		if(y <= 0 || y >= Jeu.HEIGHT - this.size - 25)
-			velY *= -1;
+		super.tick();//keep balls inside
 	}
 
 	public void render(Graphics g) {

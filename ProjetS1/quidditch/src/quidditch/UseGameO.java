@@ -35,13 +35,13 @@ public class UseGameO {
 			System.out.println(o1 + " " + o2);
 
 			if (o1 instanceof Joueur) {
-				if (o2 instanceof Souffle) {
-					((Souffle) o2).pousse((Joueur)o1);
+				if (o2 instanceof Souaffle) {
+					((Souaffle) o2).pousse((Joueur)o1);
 				}
 			}
-			if (o1 instanceof Souffle) {
+			if (o1 instanceof Souaffle) {
 				if (o2 instanceof Joueur) {
-					((Souffle) o1).pousse((Joueur) o2);
+					((Souaffle) o1).pousse((Joueur) o2);
 				}
 			}
 		}
@@ -77,6 +77,19 @@ public class UseGameO {
 		return lst;
 	}
 
+	
+	public Joueur getPlayer(int p) {
+		int i = 0;
+		assert(i == 0 || i == 1);//id 0 and 1 are the only player
+		
+		while (i < objects.size()) {
+			if (objects.get(i).getId() == p)
+				return (Joueur)objects.get(i);
+			i++;
+		} 
+		return null;
+	}
+	
 	public void addObject(GameObject newObject) {
 		objects.add(newObject);
 	}

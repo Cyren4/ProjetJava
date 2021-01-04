@@ -1,13 +1,13 @@
 package quidditch;
 
-import java.awt.Graphics;
+import java.awt.Graphics ;
 
 /**
  * classe abstraite dont herite tous objets sur terrain visible avec une position
  * @author cyrena
  *
  */
-public abstract class GameObject {
+public abstract class GameObject implements Affichable{
 	protected int x, y;//position
 	protected int velX, velY;//vitesse
 	public final int id;
@@ -24,7 +24,6 @@ public abstract class GameObject {
 	public abstract void tick();
 	
 	public abstract void render(Graphics g);
-	
 	
 	public int getId() {
 		return id;
