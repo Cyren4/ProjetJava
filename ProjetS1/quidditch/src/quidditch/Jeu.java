@@ -187,10 +187,32 @@ public class Jeu extends Canvas implements Runnable{
 				frames = 0;
 				ticks = 0;
 			}
+			if (NBSOUAFFLE == 0) {
+				if (playAgain() == 1)
+					reset();
+				else
+					break;
+			}
 		}
 		stop();
 	}
-
+	
+	private void reset() {}
+	
+	private int playAgain() {
+		Scanner sc = new Scanner(System.in);
+		System.out.printf("Do you want to play again? \n"+
+	        		"\t1. Yes\n"+
+	        		"\t2. No\n");
+	        //try/catch affiche un message d'erreur si un int n'est pas rentré dans ligne de commande
+	        try{
+	            int choice = sc.nextInt();
+	            sc.nextLine(); //this line consume the \n, otherwise the 2nd name can't have an input
+	            return choice;
+	        } catch(Exception e){
+	            throw new RuntimeException("Error.\nYou need to Enter a number");
+	        }
+	}
 	//update all game object
 	private void tick() {
 		handler.tick();
