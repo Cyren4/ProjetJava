@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 
+import Balles.Cognard;
+
 
 /**
  * 	Joueur :  A chaque partie il y a 2 joueurs = un dans chaque equipe
@@ -23,6 +25,7 @@ public class Joueur extends GameObject {
 	public final String name;
 	public final int team;
 	public final Color c;
+	private int stunned;
 	//ajout barre vie -> si on se fait toucher trop de fois par cognard = mort ? 
 
 	public Joueur(String nom, int team, Color c) {
@@ -30,6 +33,11 @@ public class Joueur extends GameObject {
 		this.name = nom;
 		this.team = team;
 		this.c = c;
+		this.stunned = 0;
+	}
+
+	public void getKnocked() {
+		stunned = Cognard.STUN_DURATION;
 	}
 
 	public int getTeam() {
@@ -39,10 +47,15 @@ public class Joueur extends GameObject {
 	public String getName() {
 		return name;
 	}
+
 	@Override
 	public void tick() {
-		x = Jeu.limit(x + velX, 0, Jeu.WIDTH-35);
-		y = Jeu.limit(y + velY, 0, Jeu.HEIGHT-60);
+		if (stunned == 0) {
+			x = Jeu.limit(x + velX, 0, Jeu.WIDTH-35);
+			y = Jeu.limit(y + velY, 0, Jeu.HEIGHT-60);
+		} else {
+			stunned--;
+		}
 	}
 
 	@Override

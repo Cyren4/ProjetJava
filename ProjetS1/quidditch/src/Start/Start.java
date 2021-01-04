@@ -23,17 +23,22 @@ public final class Start {
 	}
 	
 	//Donne le choix au joueur du nombre de souaffle, Cognard et Vif d'Or
-	public static int[] initBalls(Scanner sc){
+	public static int[] initBalls(Scanner sc) throws TropDErreurException {
 		int[] nbBalls = new int[3];
 		int choice;
+		int nbErreur = 0;
 		
 		try{
 			 	System.out.printf("How many Quaffles do you want?\n"+
 					 "\t 3 or 5 ? \n");
 	            do  {
-	            	choice = sc.nextInt();
-	            	if(choice !=  3 && choice != 5)
+            		choice = sc.nextInt();
+	            	if(choice !=  3 && choice != 5) {
+	            		nbErreur++;
+	            		if (nbErreur > 4) throw new TropDErreurException("Erreur dans le choix du nombre de Souaffle");
 	            		System.out.printf("Not valid number, try again.\n");
+	            	}
+
 	            }while (choice !=  3 && choice != 5);
 	            nbBalls[0] = choice;
 	            
@@ -41,8 +46,11 @@ public final class Start {
 	   				 "\t 0, 1 or 2 ? \n");
 	            do  {
 	            	choice = sc.nextInt();
-	            	if(choice < 0 || choice > 2)
+	            	if(choice < 0 || choice > 2){
+	            		nbErreur++;
+	            		if (nbErreur > 4) throw new TropDErreurException("Erreur dans le choix du nombre de Cognard");
 	            		System.out.printf("Not valid number, try again.\n");
+	            	}
 	            }while (choice < 0 || choice > 2);
 	            nbBalls[1] = choice;
 	            
@@ -50,23 +58,28 @@ public final class Start {
 		   				 "\t 0 or 1 ? \n");
 	            do  {
 	            	choice = sc.nextInt();
-	            	if(choice < 0 || choice > 1)
+	            	if(choice < 0 || choice > 1){
+	            		nbErreur++;
+	            		if (nbErreur > 4) throw new TropDErreurException("Erreur dans le choix du nombre de Vif d'or");
+
 	            		System.out.printf("Not valid number, try again.\n");
+	            	}
 	            }while (choice < 0 || choice > 1);
 	            nbBalls[2] = choice;
 	           
 	} catch(Exception e){
-		throw new RuntimeException("Error.\nYou need to Enter a number");
+		throw new TropDErreurException("You need to Enter a number");
 	}
 		 return nbBalls;
 	}
 	
 	//Donne le choix au joueur de sa couleur(equipe) entre Gryffondor / Poufsouffle / Serdaigle / Serpentard
-	public static Joueur[] initPlayer(Scanner sc){
+	public static Joueur[] initPlayer(Scanner sc) throws TropDErreurException {
 		Joueur[] player = new Joueur[2];
 		int otherTeam = 0;
 		String name;
-		int team ;
+		int team;
+		int nbErreur = 0;
 		try{
 			for (int i = 0 ; i < 2; i++) {
 				System.out.println("Player " + (i+1) + " : \nEnter your Name : \n");
@@ -85,17 +98,17 @@ public final class Start {
 				else if (team == 4)
 					player[i] = new Joueur(name, i, Color.green);
 				else
-					throw new RuntimeException("Error.\n");
+					throw new TropDErreurException("Team not valid");
 			}
 		
 	   	} catch(Exception e){
-	   		throw new RuntimeException("Error.\nYou need to Enter a string");
+	   		throw new TropDErreurException("You need to Enter a string");
 	    }
 		
 		return player;
 	}
 	
-	public static int chooseTeam(Scanner sc, int otherTeam) {
+	public static int chooseTeam(Scanner sc, int otherTeam) throws TropDErreurException{
 		System.out.printf("Which team do you want to join? \n"+
 				 "\t1. Gryffindor (red)\n"+
 	    		 "\t2. Hufflepuff (blue)\n"+
@@ -113,7 +126,7 @@ public final class Start {
 	            else
 	            	return choice;
 	        } catch(Exception e){
-	            throw new RuntimeException("Error.\nYou need to Enter a number");
+	            throw new TropDErreurException("You need to Enter a number");
 	        }
 	}
 	
