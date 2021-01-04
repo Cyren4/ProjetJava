@@ -71,7 +71,7 @@ public class Jeu extends Canvas implements Runnable{
 	}
 
 	//choose random (code pas tres elabore mais nous permet d'effectuer plus nos test plus rapidement)
-	public static Jeu pickRandom(Scanner sc){
+	private static Jeu pickRandom(Scanner sc){
         System.out.printf("What do you want to do ? \n"+
         		"\t1. Choose your own settings!\n"+
         		"\t2. Random settings\n");
@@ -82,7 +82,7 @@ public class Jeu extends Canvas implements Runnable{
             if (choice == 1){
             	return new Jeu(Start.initPlayer(sc), Start.initBalls(sc));
             }else {
-            	int[] b =  {rd.nextBoolean() ? 3 : 5,rd.nextInt(2), rd.nextInt(1)};
+            	int[] b =  {rd.nextBoolean() ? 3 : 5,rd.nextInt(2), rd.nextInt(100) % 2};
             	return new Jeu(randomPlayer(), b);
             }
         } catch(Exception e){

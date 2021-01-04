@@ -6,11 +6,11 @@ import java.util.Random;
 import quidditch.*;
 
 public class VifOr extends Balle{
-//	boolean visible;
+	boolean visible;
 	
 	public VifOr() {
 		super((int)(Math.random()*Jeu.WIDTH), (int)(Math.random()*Jeu.HEIGHT), 4, 15);
-
+		visible = true;
 	}
 	
 	public static boolean prob() {
@@ -18,18 +18,13 @@ public class VifOr extends Balle{
 	}
 	@Override
 	public void tick() {
-		
-//		if (count == (int)(Math.random()* 40 + 20){
-		if(prob() && count == 30)	{
-			x = (int)(Math.random() * Jeu.WIDTH);
-			y =  (int)(Math.random() * Jeu.HEIGHT);
-			count = 0;
-		} else {
-			x = -10;
-			y = -10;
-			count++;
-		}
-		
+		if ( 0 > count)	{
+			x = visible ? (int)(Math.random() * Jeu.WIDTH) : -10;
+			y = visible ? (int)(Math.random() * Jeu.HEIGHT) : - 10;
+			count = (int)(Math.random()* 100) + 50;
+			visible = !visible;
+		} else
+			count--;
 	}
 
 	public void render(Graphics g) {
