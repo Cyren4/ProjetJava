@@ -1,4 +1,4 @@
-
+package Start;
 
 import java.awt.Color;
 import java.util.*;
@@ -17,7 +17,7 @@ public final class Start {
 		Scanner sc = new Scanner(System.in);
 		
 		if(start(sc) == 1)
-			new Jeu(initPlayer(sc), initBalls(sc));
+			Jeu.GetInstance();
 		else
 			System.out.println("You chose to quit the game.\nSee you soon!");
 	}
@@ -66,13 +66,16 @@ public final class Start {
 		Joueur[] player = new Joueur[2];
 		int otherTeam = 0;
 		String name;
+		int team ;
 		try{
 			for (int i = 0 ; i < 2; i++) {
-				System.out.println("Player " + i + " : \nEnter your Name : \n");
+				System.out.println("Player " + (i+1) + " : \nEnter your Name : \n");
 				name = sc.nextLine();
-				System.out.println("Player " + name);
-				int team = chooseTeam(sc, otherTeam);
+				System.out.println("Player "+ (i+1) + " : " + name + "\n");
+				team = chooseTeam(sc, otherTeam);
+				sc.nextLine(); //this line consume the \n, otherwise the 2nd name can't have an input
 				otherTeam = team;
+				
 				if (team == 1)
 					player[i] = new Joueur(name, i, Color.red);
 				else if (team == 2)

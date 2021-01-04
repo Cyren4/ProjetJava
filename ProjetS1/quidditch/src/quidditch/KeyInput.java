@@ -23,15 +23,22 @@ public class KeyInput extends KeyAdapter{
 			GameObject tmpObj = handler.object.get(i);
 			
 			if(tmpObj.getId() == 0) {
-				if(key ==  KeyEvent.VK_A )tmpObj.setVelX(-3);
 				if(key ==  KeyEvent.VK_W )tmpObj.setVelY(-3);
+				if(key ==  KeyEvent.VK_S)tmpObj.setVelY(3);	
 				if(key ==  KeyEvent.VK_D )tmpObj.setVelX(3);
-				if(key ==  KeyEvent.VK_S)tmpObj.setVelY(3);				
-			}else if(tmpObj.getId() == 1){
+				if(key ==  KeyEvent.VK_A )tmpObj.setVelX(-3);
+			}
+			if(tmpObj.getId() == 1){
 				if(key ==  KeyEvent.VK_UP )tmpObj.setVelY(-3);
 				if(key ==  KeyEvent.VK_DOWN )tmpObj.setVelY(3);
 				if(key ==  KeyEvent.VK_RIGHT )tmpObj.setVelX(3);
 				if(key ==  KeyEvent.VK_LEFT)tmpObj.setVelX(-3);		
+			}
+			if(tmpObj.getId() == 2) {//a sup
+				if(key ==  KeyEvent.VK_T )tmpObj.setVelY(-3);//a sup
+				if(key ==  KeyEvent.VK_G)tmpObj.setVelY(3);	//a sup
+				if(key ==  KeyEvent.VK_H )tmpObj.setVelX(3);//a sup
+				if(key ==  KeyEvent.VK_F )tmpObj.setVelX(-3);	//a sup		
 			}
 		}
 	}

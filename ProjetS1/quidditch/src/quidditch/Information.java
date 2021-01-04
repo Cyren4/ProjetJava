@@ -47,7 +47,7 @@ public class Information {
 	    }
 	    
 	    public static void field(){
-	    	 System.out.println("\nThe field is pretty wide"+ Jeu.WIDTH + " x " + Jeu.HEIGHT + "sq feet"+
+	    	 System.out.println("\nThe field is pretty wide : "+ Jeu.WIDTH + " x " + Jeu.HEIGHT + "sq feet.\n"+
 	    			 "Both teams Hoops to score are highlighted.\n");
 	    }
 	    public static void balls(){

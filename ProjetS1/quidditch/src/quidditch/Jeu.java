@@ -1,6 +1,8 @@
 package quidditch;
 
 import Balles.*;
+import Start.*;
+
 import java.util.*; //need Random and Scanner and ArrayList
 import java.awt.Canvas;
 import java.awt.Color;
@@ -10,60 +12,84 @@ import java.io.*;
 
 /**
  * class Jeu : suit le fil du jeu et affiche les logs
+ * Il s'agit d'un singleton
  * @author cyrena
  * Initialise : 
  * - 2 Joueurs
  * - Les balles 
  */
-public class Jeu extends Canvas implements Runnable {
+
+public class Jeu extends Canvas implements Runnable{
+	
+	private static Jeu INSTANCE;
+	
 	public static final int WIDTH = 1000; 
 	public static final int HEIGHT = 640;
-	public final int startSouffle;
+	public final int startSouaffle;
 	
 	private Thread thread;
 	private boolean running = false;
 	private UseGameO handler;
 
-	public static int NBSOUFFLE = 0;
+	private static int NBSOUAFFLE = 0;
 	private int nbCognard;
 	private boolean vifOr = true;
-//	private Terrain t;
-//	private ArrayList<Balle> bal;
-//	private Joueur[] j;
-//	private int nbBalles;
+	private static int[] SCORE = {0, 0};
+	private static Joueur[] player;
 	
 	
+	public static Jeu GetInstance(){
+		Scanner sc = new Scanner(System.in);
+		if (INSTANCE == null)
+			INSTANCE = new Jeu(Start.initPlayer(sc), Start.initBalls(sc));
+		return INSTANCE;
+	}
 	
-	public Jeu(Joueur[] j, int[] nbBall){
+	private  Jeu(Joueur[] j, int[] nbBall){
 		handler  = new UseGameO();
 		this.addKeyListener(new KeyInput(handler));
 		new Window(WIDTH, HEIGHT, "Quidditch Tournament!", this);
 		
-		startSouffle = nbBall[0];
-		System.out.println(startSouffle);
+		startSouaffle = nbBall[0];
 		nbCognard = nbBall[1];
 		vifOr = nbBall[2] == 1;
 		
 		handler.addObject(j[0]);
 		handler.addObject(j[1]);
+		player = new Joueur[2];
+		player[0] = j[0];
+		player[1] = j[1];
 		
-		for(int i = 0; i < startSouffle; i++) {
-			handler.addObject(new Souffle(handler, startSouffle));
-			NBSOUFFLE++;
+		for(int i = 0; i < startSouaffle; i++) {
+			handler.addObject(new Souaffle(handler, startSouaffle));
+			NBSOUAFFLE++;
 		}
 		for(int i = 0; i < nbCognard; i++)
 			handler.addObject(new Cognard());
 		if (vifOr)	handler.addObject(new VifOr());
+		
 	}
 
-	public int getNbStartSouffle() {
-		return startSouffle;
+	
+	public int getNbStartSouaffle() {
+		return startSouaffle;
 	}
 	
-	public int getNbSouffle() {
-		return NBSOUFFLE;
+	public static int getNbSouaffle() {
+		return NBSOUAFFLE;
 	}
 
+	public static void goal(int team) {
+		SCORE[team]++;
+		System.out.println("Current score : " + SCORE[0] +"\t-\t"+ SCORE[1] + "\n");
+		if (SCORE[0] == SCORE[1])
+			System.out.println("The battle is fierce both player are ex aequo!\n");
+		else
+			System.out.println(player[SCORE[0] > SCORE[1]? 0 : 1].getName() + " takes the lead!\n");
+		NBSOUAFFLE--;
+		if (NBSOUAFFLE == 0)
+			System.out.println(player[SCORE[0] > SCORE[1]? 0 : 1].getName() + " won the tournament!\n");
+	}
 	// start thread of game
 	public synchronized void start() {
 		thread = new Thread(this);

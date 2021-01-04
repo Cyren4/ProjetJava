@@ -32,6 +32,18 @@ public class UseGameO {
 		}
 	}
 	
+	public Joueur getPlayer(int p) {
+		int i = 0;
+		assert(i == 0 || i == 1);//id 0 and 1 are the only player
+		
+		while (i < object.size()) {
+			if (object.get(i).getId() == p)
+				return (Joueur)object.get(i);
+			i++;
+		} 
+		return null;
+	}
+	
 	public void addObject(GameObject newObject) {
 		object.add(newObject);
 	}

@@ -5,32 +5,37 @@ import java.awt.Graphics;
 import java.util.Random;
 import quidditch.*;
 
-public class Souffle extends Balle{
+public class Souaffle extends Balle{
 	private UseGameO handler;
 	
-	public Souffle(UseGameO handler, int nbStart) {
+	public Souaffle(UseGameO handler, int nbStart) {
 		super((int)(Jeu.WIDTH/2), calculPlace(nbStart), 2, 35);
-		System.out.println("nbStart souaffls : " + nbStart + "\nnbSouaffle" + Jeu.NBSOUFFLE +"\nyStart : "+ calculPlace(nbStart));
 		this.handler = handler;
 		
 	}
 	
 	private static int calculPlace(int nbStart) {
 		int implement = nbStart == 3 ? 200 : 125;
-		return nbStart == 3 ? 100 + Jeu.NBSOUFFLE * implement : 50 + Jeu.NBSOUFFLE * implement;
+		return nbStart == 3 ? 100 + Jeu.getNbSouaffle() * implement : 50 + Jeu.getNbSouaffle() * implement;
 	}
 	//faire interraction avec joueur
 	public void tick() {
 		// comment faire une vitesse decroissante ? aka force de frottement 
-		if ( y >= 180 && y <= 360 && this.id == 2) //check s'il s'agit d'un souffle
+		x += velX;//to sup
+		y += velY;//to sup
+		if ( y >= 180 && y <= 360) { //check y
 			if (x <= 5) {
-				System.out.println("GOALLL 1"); // ajouter le score a l'equipe 1
+				System.out.println("Team 2 Scored!\n"); // ajouter le score a l'equipe 1
 				handler.removeObject(this);
+				Jeu.goal(1);
 			}
 			else if ( x >= Jeu.WIDTH - 35){
-				System.out.println("GOALLL 2");// ajouter le score a l'equipe 0
+				System.out.println("Team 1 Scored!\n");// ajouter le score a l'equipe 0
 				handler.removeObject(this);
+				Jeu.goal(0);
 			}
+		}
+		super.tick();//keep balls inside
 	}
 
 	public void render(Graphics g) {
