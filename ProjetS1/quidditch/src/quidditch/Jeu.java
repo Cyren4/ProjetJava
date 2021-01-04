@@ -77,17 +77,17 @@ public class Jeu extends Canvas implements Runnable{
         		"\t2. Random settings\n");
         Random rd = new Random();
         //try/catch affiche un message d'erreur si un int n'est pas rentré dans ligne de commande
-        try{
-            int choice = sc.nextInt();
-            if (choice == 1){
-            	return new Jeu(Start.initPlayer(sc), Start.initBalls(sc));
-            }else {
-            	int[] b =  {rd.nextBoolean() ? 3 : 5,rd.nextInt(2), rd.nextInt(1)};
-            	return new Jeu(randomPlayer(), b);
-            }
-        } catch(Exception e){
-            throw new RuntimeException("Error.\nYou need to Enter a number");
+        int choice = sc.nextInt();
+        if (choice == 1){
+        	try {
+        		return new Jeu(Start.initPlayer(sc), Start.initBalls(sc));
+        	} catch(TropDErreurException e) {
+        		System.out.println("You have made too much mistake, so youre settings will be random. Do better next time !");
+        		//Pas de return, on sélectionne donc au hasard
+        	}
         }
+    	int[] b =  {rd.nextBoolean() ? 3 : 5,rd.nextInt(2), rd.nextInt(1)};
+    	return new Jeu(randomPlayer(), b);
     }
 	
 	private static Joueur[] randomPlayer(){
