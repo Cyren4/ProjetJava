@@ -46,6 +46,8 @@ public class Souaffle extends Balle{
 				Jeu.goal(0);
 			}
 		}
+		x = Jeu.limit(x + velX, 0, Jeu.WIDTH-35);
+		y = Jeu.limit(y + velY, 0, Jeu.HEIGHT-60);
 		super.tick();//keep balls inside
 	}
 

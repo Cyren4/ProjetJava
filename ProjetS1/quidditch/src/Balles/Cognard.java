@@ -8,7 +8,7 @@ import quidditch.*;
 public class Cognard extends Balle{
 	
 	public Cognard() {
-		super((int)(Math.random()*(Jeu.WIDTH - 25) + 20), (int)(Math.random()*(Jeu.HEIGHT-25)) + 20, 3, 25);
+		super((int)(Math.random()*(Jeu.WIDTH - 50) + 30), (int)(Math.random()*(Jeu.HEIGHT-50)) + 30, 3, 25);
 		velX = 2;
 		velY = 2;
 	}
