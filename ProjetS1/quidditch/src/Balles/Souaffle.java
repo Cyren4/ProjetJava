@@ -11,28 +11,26 @@ public class Souaffle extends Balle{
 	public Souaffle(UseGameO handler, int nbStart) {
 		super((int)(Jeu.WIDTH/2), calculPlace(nbStart), 2, 35);
 		this.handler = handler;
-
-		
 	}
 	
 	private static int calculPlace(int nbStart) {
 		int implement = nbStart == 3 ? 200 : 125;
 		return nbStart == 3 ? 100 + Jeu.getNbSouaffle() * implement : 50 + Jeu.getNbSouaffle() * implement;
 	}
-	//faire interraction avec joueur
+	
+	//interraction avec joueur
 	public void tick() {
+		// comment faire une vitesse decroissante, aka force de frottement 
 		if (count == 70){
 			if (velX > 0) velX--;
 			if (velX < 0) velX++;
 			if (velY > 0) velY--;
 			if (velY < 0) velY++;
 			count = 0;
-		} else {
+		} else
 			count++;
-		}
-		// comment faire une vitesse decroissante ? aka force de frottement 
-		x += velX;//to sup
-		y += velY;//to sup
+	
+
 		if ( y >= 180 && y <= 360) { //check y
 			if (x <= 5) {
 				System.out.println("Team 2 Scored!\n"); // ajouter le score a l'equipe 1

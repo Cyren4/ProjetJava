@@ -34,12 +34,6 @@ public class KeyInput extends KeyAdapter{
 				if(key ==  KeyEvent.VK_RIGHT )tmpObj.setVelX(3);
 				if(key ==  KeyEvent.VK_LEFT)tmpObj.setVelX(-3);		
 			}
-			if(tmpObj.getId() == 2) {//a sup
-				if(key ==  KeyEvent.VK_T )tmpObj.setVelY(-3);//a sup
-				if(key ==  KeyEvent.VK_G)tmpObj.setVelY(3);	//a sup
-				if(key ==  KeyEvent.VK_H )tmpObj.setVelX(3);//a sup
-				if(key ==  KeyEvent.VK_F )tmpObj.setVelX(-3);	//a sup		
-			}
 		}
 	}
 	
