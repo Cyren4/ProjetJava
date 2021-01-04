@@ -7,12 +7,11 @@ import quidditch.*;
 
 public class Souaffle extends Balle{
 	private UseGameO handler;
-	private int count;
 	
 	public Souaffle(UseGameO handler, int nbStart) {
 		super((int)(Jeu.WIDTH/2), calculPlace(nbStart), 2, 35);
 		this.handler = handler;
-		count = 0;
+
 		
 	}
 	
@@ -22,7 +21,7 @@ public class Souaffle extends Balle{
 	}
 	//faire interraction avec joueur
 	public void tick() {
-		if (count == 60){
+		if (count == 70){
 			if (velX > 0) velX--;
 			if (velX < 0) velX++;
 			if (velY > 0) velY--;

@@ -6,12 +6,12 @@ import java.util.Random;
 import quidditch.*;
 
 public abstract class Balle extends GameObject {
-//	private static int nbBalles;
-//	private boolean visible;
+	protected int count;
 	
 	
 	public Balle(int x, int y , int id, int size) {
 		super(x, y, id, size);
+		count = 0;
 	}
 	
 	public void tick() {

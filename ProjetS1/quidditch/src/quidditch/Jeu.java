@@ -41,7 +41,7 @@ public class Jeu extends Canvas implements Runnable{
 	public static Jeu GetInstance(){
 		Scanner sc = new Scanner(System.in);
 		if (INSTANCE == null)
-			INSTANCE = new Jeu(Start.initPlayer(sc), Start.initBalls(sc));
+			INSTANCE = pickRandom(sc);
 		return INSTANCE;
 	}
 	
@@ -70,6 +70,32 @@ public class Jeu extends Canvas implements Runnable{
 		
 	}
 
+	//choose random (code pas tres elabore mais nous permet d'effectuer plus nos test plus rapidement)
+	public static Jeu pickRandom(Scanner sc){
+        System.out.printf("What do you want to do ? \n"+
+        		"\t1. Choose your own settings!\n"+
+        		"\t2. Random settings\n");
+        Random rd = new Random();
+        //try/catch affiche un message d'erreur si un int n'est pas rentré dans ligne de commande
+        try{
+            int choice = sc.nextInt();
+            if (choice == 1){
+            	return new Jeu(Start.initPlayer(sc), Start.initBalls(sc));
+            }else {
+            	int[] b =  {rd.nextBoolean() ? 3 : 5,rd.nextInt(2), rd.nextInt(1)};
+            	return new Jeu(randomPlayer(), b);
+            }
+        } catch(Exception e){
+            throw new RuntimeException("Error.\nYou need to Enter a number");
+        }
+    }
+	
+	private static Joueur[] randomPlayer(){
+		Joueur j[] = new Joueur[2];
+		j[0] = new Joueur("Player 1", 0,Color.red);
+		j[1] = new Joueur("Player 1", 1,Color.green);
+		return j;
+	}
 	
 	public int getNbStartSouaffle() {
 		return startSouaffle;

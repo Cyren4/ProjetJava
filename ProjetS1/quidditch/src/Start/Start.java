@@ -116,6 +116,8 @@ public final class Start {
 	            throw new RuntimeException("Error.\nYou need to Enter a number");
 	        }
 	}
+	
+
 	//menu de depart 
 	public static int start(Scanner sc){
         System.out.printf("What do you want to do ? \n"+
