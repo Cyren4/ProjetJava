@@ -16,6 +16,19 @@ public class Cognard extends Balle{
 
 	@Override
 	public void tick() {
+		if (Math.random() < 0.008) { //0.8% de chance que le cognard change de direction
+			System.out.println("X");
+			if (Math.random() > 0.5) {
+				velX = 2;
+			} else {
+				velX = -2;
+			}
+			if (Math.random() > 0.5) {
+				velY = 2;
+			} else {
+				velY = -2;
+			}
+		}
 		x += velX;
 		y += velY;
 		super.tick();//keep balls inside

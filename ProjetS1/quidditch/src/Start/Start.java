@@ -79,7 +79,7 @@ public final class Start {
 		int otherTeam = 0;
 		String name;
 		int team;
-		int nbErreur = 0;
+		int nbErreur = 0; //Au bout de 4 erreurs tout les paramètres seront choisis aléatoirement
 		try{
 			for (int i = 0 ; i < 2; i++) {
 				System.out.println("Player " + (i+1) + " : \nEnter your Name : \n");

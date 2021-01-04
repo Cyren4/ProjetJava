@@ -8,7 +8,10 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.awt.Dimension;
+import javax.swing.JFrame;
 import java.io.*;
+
 
 /**
  * class Jeu : suit le fil du jeu et affiche les logs
@@ -48,7 +51,7 @@ public class Jeu extends Canvas implements Runnable{
 	private  Jeu(Joueur[] j, int[] nbBall){
 		handler  = new UseGameO();
 		this.addKeyListener(new KeyInput(handler));
-		new Window(WIDTH, HEIGHT, "Quidditch Tournament!", this);
+		createWindow(WIDTH, HEIGHT, "Quidditch Tournament!", this);
 		
 		startSouaffle = nbBall[0];
 		nbCognard = nbBall[1];
@@ -68,6 +71,22 @@ public class Jeu extends Canvas implements Runnable{
 			handler.addObject(new Cognard());
 		if (vifOr)	handler.addObject(new VifOr());
 		
+	}
+
+	private void createWindow(int width, int height, String title, Jeu jeu) {
+		JFrame frame = new JFrame(title);
+		
+		frame.setPreferredSize(new Dimension(width, height));
+		frame.setMaximumSize(new Dimension(width, height));
+		frame.setMinimumSize(new Dimension(width, height));
+		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
+		frame.add(jeu);
+		frame.setVisible(true);
+		jeu.start();
+
 	}
 
 	//choose random (code pas tres elabore mais nous permet d'effectuer plus nos test plus rapidement)
@@ -135,8 +154,7 @@ public class Jeu extends Canvas implements Runnable{
 		
 	}
 	
-	//blabla du copie colle pour avoir notre boucle de jeu et avoir des log de fps du jeu
-	//je trouvais ca assez cool donc je l'ai ajoute
+	//D'après un code trouvé sur internet puis modifié pour qu'il nous convienne.
 	public void run() {
 		long lastTime = System.nanoTime();
 		double amountOfTicks = 60.0;
@@ -156,7 +174,7 @@ public class Jeu extends Canvas implements Runnable{
 				delta--;
 				new_tick = true;
 			}
-			if (running && new_tick) {//si jeu en cours on affiche
+			if (running && new_tick) {//si jeu en cours et qu'il y a eu un tick, on affiche
 				render();
 				frames++;
 				new_tick = false;
