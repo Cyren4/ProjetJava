@@ -37,12 +37,19 @@ public class UseGameO {
 			if (o1 instanceof Joueur) {
 				if (o2 instanceof Souaffle) {
 					((Souaffle) o2).pousse((Joueur)o1);
+				} else if (o2 instanceof Cognard) {
+					((Joueur)o1).getKnocked();
 				}
 			}
 			if (o1 instanceof Souaffle) {
 				if (o2 instanceof Joueur) {
 					((Souaffle) o1).pousse((Joueur) o2);
 				}
+			}
+			if (o1 instanceof Cognard) {
+				if (o2 instanceof Joueur) {
+					((Joueur) o2).getKnocked();
+				} 
 			}
 		}
 	}
