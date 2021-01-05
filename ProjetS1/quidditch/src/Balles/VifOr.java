@@ -12,16 +12,13 @@ import quidditch.*;
  *
  */
 public class VifOr extends Balle{
-	boolean visible;
+	private boolean visible;
 	
 	public VifOr() {
 		super((int)(Math.random()*Jeu.WIDTH), (int)(Math.random()*Jeu.HEIGHT), 4, 15);
 		visible = true;
 	}
 	
-	public static boolean prob() {
-		return (int)(Math.random()* 100) < 5;
-	}
 	@Override
 	public void tick() {
 		if ( 0 > count)	{

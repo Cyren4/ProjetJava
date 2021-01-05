@@ -77,13 +77,6 @@ public final class Start {
 		 return nbBalls;
 	}
 	
-	private static int tooManyError(String error, int nbErreur)throws TropDErreurException{
-		nbErreur++;
-		if (nbErreur > 4) throw new TropDErreurException("Erreur dans le choix du nombre de" + error);
-		System.out.printf("Not valid number, try again.\n");
-		return nbErreur;
-	}
-	
 	//Donne le choix au joueur de sa couleur(equipe) entre Gryffondor / Poufsouffle / Serdaigle / Serpentard
 	public static Joueur[] initPlayer(Scanner sc) throws TropDErreurException {
 		Joueur[] player = new Joueur[2];
