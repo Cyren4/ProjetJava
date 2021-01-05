@@ -25,7 +25,7 @@ import java.io.*;
 
 public class Jeu extends Canvas implements Runnable, Saveable{
 	
-	private static Jeu INSTANCE;
+	private static Jeu instance;
 	
 	public static final int WIDTH = 1000; 
 	public static final int HEIGHT = 640;
@@ -36,7 +36,7 @@ public class Jeu extends Canvas implements Runnable, Saveable{
 	private boolean running = false;
 	private UseGameO handler;
 
-	private static int NbSouaffle = 0;
+	private static int nbSouaffle = 0;
 	private int nbCognard;
 	private boolean vifOr = true;
 	private static int[] score = {0, 0};
@@ -45,9 +45,9 @@ public class Jeu extends Canvas implements Runnable, Saveable{
 	
 	public static Jeu GetInstance(){
 		Scanner sc = new Scanner(System.in);
-		if (INSTANCE == null)
-			INSTANCE = pickRandom(sc);
-		return INSTANCE;
+		if (instance == null)
+			instance = pickRandom(sc);
+		return instance;
 	}
 	
 	private  Jeu(Joueur[] j, int[] nbBall){
@@ -69,7 +69,7 @@ public class Jeu extends Canvas implements Runnable, Saveable{
 		
 		for(int i = 0; i < startSouaffle; i++) {
 			handler.addObject(new Souaffle(handler, startSouaffle));
-			NbSouaffle++;
+			nbSouaffle++;
 		}
 		for(int i = 0; i < nbCognard; i++)
 			handler.addObject(new Cognard());
@@ -127,7 +127,7 @@ public class Jeu extends Canvas implements Runnable, Saveable{
 	}
 	
 	public static int getNbSouaffle() {
-		return NbSouaffle;
+		return nbSouaffle;
 	}
 
 	public static void goal(int team) {
@@ -137,8 +137,8 @@ public class Jeu extends Canvas implements Runnable, Saveable{
 			System.out.println("The battle is fierce both player are ex aequo!\n");
 		else
 			System.out.println(player[score[0] > score[1]? 0 : 1].getName() + " takes the lead!\n");
-		NbSouaffle--;
-		if (NbSouaffle == 0)
+		nbSouaffle--;
+		if (nbSouaffle == 0)
 			System.out.println(player[score[0] > score[1]? 0 : 1].getName() + " won the tournament!\n");
 	}
 	
@@ -150,7 +150,7 @@ public class Jeu extends Canvas implements Runnable, Saveable{
 	}
 	
 	private void reset() {
-		INSTANCE = null;
+		instance = null;
 		score[0] = 0;
 		score[1] = 0;
 		GetInstance();
@@ -201,7 +201,7 @@ public class Jeu extends Canvas implements Runnable, Saveable{
 				frames = 0;
 				ticks = 0;
 			}
-			if (NbSouaffle == 0) {
+			if (nbSouaffle == 0) {
 				
 				if (playAgain() == 1)
 					reset();
@@ -278,7 +278,7 @@ public class Jeu extends Canvas implements Runnable, Saveable{
 	}
 
 	public static void win(int team) {
-		NbSouaffle = 0;
+		nbSouaffle = 0;
 	}
 
 	@Override
