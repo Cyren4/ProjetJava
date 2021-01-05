@@ -54,6 +54,7 @@ public class Jeu extends Canvas implements Runnable{
 		handler  = new UseGameO();
 		this.addKeyListener(new KeyInput(handler));
 		createWindow(WIDTH, HEIGHT, "Quidditch Tournament!", this);
+		this.requestFocusInWindow();
 		
 		startSouaffle = nbBall[0];
 		nbCognard = nbBall[1];
