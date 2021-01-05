@@ -4,7 +4,13 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 import quidditch.*;
-
+/**
+ * Le vif d'or apparait de maniere aleatoire pendant des temps aleatoire sur le terrain
+ * pour simplifier les choses on le positionne juste en dehors du terrain lorsqu'il est invisible
+ * si le joueur touche le vif d'or il gagne automatiquement la partie
+ * @author cyrena
+ *
+ */
 public class VifOr extends Balle{
 	boolean visible;
 	
@@ -19,8 +25,8 @@ public class VifOr extends Balle{
 	@Override
 	public void tick() {
 		if ( 0 > count)	{
-			x = visible ? (int)(Math.random() * Jeu.WIDTH) : -10;
-			y = visible ? (int)(Math.random() * Jeu.HEIGHT) : - 10;
+			x = visible ? (int)(Math.random() * Jeu.WIDTH) : -20;
+			y = visible ? (int)(Math.random() * Jeu.HEIGHT) : -20;
 			count = (int)(Math.random()* 100) + 50;
 			visible = !visible;
 		} else

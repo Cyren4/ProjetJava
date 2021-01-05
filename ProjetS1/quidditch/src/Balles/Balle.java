@@ -5,6 +5,12 @@ import java.awt.Graphics;
 import java.util.Random;
 import quidditch.*;
 
+/**
+ * Toutes les balles rebondissent sur les parois de la map
+ * et ont une forme ronde avec une couleur differente et des actions differentes
+ * @author cyrena
+ *
+ */
 public abstract class Balle extends GameObject {
 	protected int count;
 	

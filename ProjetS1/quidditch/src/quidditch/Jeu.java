@@ -7,6 +7,7 @@ import java.util.*; //need Random and Scanner and ArrayList
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.Dimension;
 import javax.swing.JFrame;
@@ -15,7 +16,7 @@ import java.io.*;
 
 /**
  * class Jeu : suit le fil du jeu et affiche les logs
- * Il s'agit d'un singleton
+ * Il s'agit d'un singleton car une partie est unique 
  * @author cyrena
  * Initialise : 
  * - 2 Joueurs
@@ -30,6 +31,7 @@ public class Jeu extends Canvas implements Runnable{
 	public static final int HEIGHT = 640;
 	public final int startSouaffle;
 	
+	private JFrame frame;
 	private Thread thread;
 	private boolean running = false;
 	private UseGameO handler;
@@ -59,9 +61,10 @@ public class Jeu extends Canvas implements Runnable{
 		
 		handler.addObject(j[0]);
 		handler.addObject(j[1]);
-		player = new Joueur[2];
-		player[0] = j[0];
-		player[1] = j[1];
+		player = j;
+//		player = new Joueur[2];
+//		player[0] = j[0];
+//		player[1] = j[1];
 		
 		for(int i = 0; i < startSouaffle; i++) {
 			handler.addObject(new Souaffle(handler, startSouaffle));
@@ -74,7 +77,7 @@ public class Jeu extends Canvas implements Runnable{
 	}
 
 	private void createWindow(int width, int height, String title, Jeu jeu) {
-		JFrame frame = new JFrame(title);
+		frame = new JFrame(title);
 		
 		frame.setPreferredSize(new Dimension(width, height));
 		frame.setMaximumSize(new Dimension(width, height));
@@ -136,6 +139,7 @@ public class Jeu extends Canvas implements Runnable{
 		if (NBSOUAFFLE == 0)
 			System.out.println(player[SCORE[0] > SCORE[1]? 0 : 1].getName() + " won the tournament!\n");
 	}
+	
 	// start thread of game
 	public synchronized void start() {
 		thread = new Thread(this);
@@ -143,9 +147,17 @@ public class Jeu extends Canvas implements Runnable{
 		running = true;
 	}
 	
+	private void reset() {
+		INSTANCE = null;
+		SCORE[0] = 0;
+		SCORE[1] = 0;
+		GetInstance();
+	}
+	
 	// stop thread of game
 	public synchronized void stop() {
 		try {
+//			frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 			thread.join();
 			running = false;
 		} catch (Exception e) {
@@ -182,22 +194,23 @@ public class Jeu extends Canvas implements Runnable{
 			
 			if (System.currentTimeMillis() - timer > 1000) {
 				timer+= 1000;
-//				System.out.println("FPS :" + frames);
-//				System.out.println("TPS :" + ticks);
+//				System.out.println("FPS :" + frames);//si on veut les fps
+//				System.out.println("TPS :" + ticks);//si on veut le nb de tick par seconde
 				frames = 0;
 				ticks = 0;
 			}
 			if (NBSOUAFFLE == 0) {
+				
 				if (playAgain() == 1)
 					reset();
-				else
+				else { 
+					frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 					break;
+				}
 			}
 		}
 		stop();
 	}
-	
-	private void reset() {}
 	
 	private int playAgain() {
 		Scanner sc = new Scanner(System.in);
@@ -213,6 +226,7 @@ public class Jeu extends Canvas implements Runnable{
 	            throw new RuntimeException("Error.\nYou need to Enter a number");
 	        }
 	}
+	
 	//update all game object
 	private void tick() {
 		handler.tick();
@@ -248,6 +262,10 @@ public class Jeu extends Canvas implements Runnable{
 		if (x >= max) return max;
 		else if (x <= min) return min;
 		else return x;
+	}
+
+	public static void win(int team) {
+		NBSOUAFFLE = 0;
 	}
 	
 }

@@ -5,6 +5,15 @@ import java.awt.Graphics;
 import java.util.Random;
 import quidditch.*;
 
+/**
+ * Les souaffles sont immobile au depart et apparaissent sur la ligne centrales.
+ * Leur ordonne de depart depend de si on commencent avec 3 ou 5 souaffles.
+ * Ils bougent si un joueur entre en collision avec eux et 
+ * perdent de la vitesse avec le temps si aucune nouvelle collision n'est faite
+ * Si un souaffle entre dans un goal il donne un point a l'equipe adverse
+ * @author cyrena
+ *
+ */
 public class Souaffle extends Balle{
 	private UseGameO handler;
 	
@@ -20,7 +29,7 @@ public class Souaffle extends Balle{
 	
 	//interraction avec joueur
 	public void tick() {
-		// comment faire une vitesse decroissante, aka force de frottement 
+		//   une vitesse decroissante, aka force de frottement (en fonction des ticks)
 		if (count == 70){
 			if (velX > 0) velX--;
 			if (velX < 0) velX++;
@@ -30,30 +39,32 @@ public class Souaffle extends Balle{
 		} else
 			count++;
 	
-
-		if ( y >= 180 && y <= 360) { //check y
-			if (x <= 5) {
+//On verifie si le souaffle n'entre pas dans une des cages
+		if ( y >= 180 && y <= 360) { 
+			if (x <= 5) {//entre dans goal gauche
 				System.out.println("Team 2 Scored!\n"); // ajouter le score a l'equipe 1
 				handler.removeObject(this);
 				Jeu.goal(1);
 			}
-			else if ( x >= Jeu.WIDTH - 35){
+			else if ( x >= Jeu.WIDTH - 35){//entre dans goal gauche
 				System.out.println("Team 1 Scored!\n");// ajouter le score a l'equipe 0
 				handler.removeObject(this);
 				Jeu.goal(0);
 			}
 		}
+//empeche la balle de sortir
 		x = Jeu.limit(x + velX, 0, Jeu.WIDTH-35);
 		y = Jeu.limit(y + velY, 0, Jeu.HEIGHT-60);
 		super.tick();//keep balls inside
 	}
 
+//gagne la vitesse du joueur avec lequel le souaffle entre en collision
 	public void pousse(Joueur j) {
 		velX += j.getVelX();
 		velY += j.getVelY();
 	}
 
 	public void render(Graphics g) {
-		super.render(g, Color.magenta);
+		super.render(g, Color.magenta);//couleur magenta
 	}
 }

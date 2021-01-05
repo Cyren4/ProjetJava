@@ -5,10 +5,13 @@ import java.util.*;
 
 import quidditch.*;
 
-//import java.awt.FlowLayout;
-//import java.awt.event.*; 
-//import javax.swing.*; 
 
+/**
+ * class Start permet d'afficher le menu d'accueil et avoir des informations sur le jeu et l'univers
+ * 
+ * @author cyrena
+ *
+ */
 public final class Start {
 	
 	private Start(){}
@@ -35,8 +38,9 @@ public final class Start {
             		choice = sc.nextInt();
 	            	if(choice !=  3 && choice != 5) {
 	            		nbErreur++;
-	            		if (nbErreur > 4) throw new TropDErreurException("Erreur dans le choix du nombre de Souaffle");
-	            		System.out.printf("Not valid number, try again.\n");
+	            		if (nbErreur > 4) 
+	            			if (nbErreur > 4) throw new TropDErreurException("Erreur dans le choix du nombre de Souaffle");
+	            			System.out.printf("Not valid number, try again.\n");
 	            	}
 
 	            }while (choice !=  3 && choice != 5);
@@ -71,6 +75,13 @@ public final class Start {
 		throw new TropDErreurException("You need to Enter a number");
 	}
 		 return nbBalls;
+	}
+	
+	private static int tooManyError(String error, int nbErreur)throws TropDErreurException{
+		nbErreur++;
+		if (nbErreur > 4) throw new TropDErreurException("Erreur dans le choix du nombre de" + error);
+		System.out.printf("Not valid number, try again.\n");
+		return nbErreur;
 	}
 	
 	//Donne le choix au joueur de sa couleur(equipe) entre Gryffondor / Poufsouffle / Serdaigle / Serpentard
@@ -140,9 +151,10 @@ public final class Start {
         //try/catch affiche un message d'erreur si un int n'est pas rentré dans ligne de commande
         try{
             int choice = sc.nextInt();
+            sc.nextLine();
             if (choice == 2){
                 info(sc);
-                start(sc);
+                start(new Scanner(System.in));
             }
             return choice;
         } catch(Exception e){
@@ -160,6 +172,7 @@ public final class Start {
         //try/catch affiche un message d'erreur si un int n'est pas rentré dans ligne de commande
         try{
             int choice = sc.nextInt();
+            sc.nextLine();
             if (choice == 1) {
                 Information.jeu();
             	Information.field();
@@ -168,7 +181,8 @@ public final class Start {
             else if (choice == 3)
                 detailBalls(sc);
             else
-                return;
+            	return;
+            info(sc);
         } catch(Exception e){
             throw new RuntimeException("Error.\nYou need to Enter a number");
         }
@@ -184,14 +198,16 @@ public final class Start {
 	        //try/catch affiche un message d'erreur si un int n'est pas rentré dans ligne de commande
 	     try{
 	    	 int choice = sc.nextInt();
+	    	 sc.nextLine();
 	    	 if (choice == 1)
 	    		 Information.quaffles();
 	         else if (choice == 2)
 	         	Information.bludgers();
-	         else if (choice == 2)
+	         else if (choice == 3)
 	        	 Information.goldenSnitch();
 	         else
 	        	 return;
+	    	 detailBalls(sc);
 	        } catch(Exception e){
 	            throw new RuntimeException("Error.\nYou need to Enter a number");
 	        }
@@ -208,16 +224,18 @@ public final class Start {
 	        //try/catch affiche un message d'erreur si un int n'est pas rentré dans ligne de commande
 	     try{
 	    	 int choice = sc.nextInt();
+	    	 sc.nextLine();
 	    	 if (choice == 1)
 	    		 Information.gryffindor();
 	         else if (choice == 2)
 	         	Information.hufflepuff();
-	         else if (choice == 2)
+	         else if (choice == 3)
 	        	 Information.ravenclaw();
-	         else if (choice == 2)
+	         else if (choice == 4)
 	        	 Information.slytherin();
 	         else
 	        	 return;
+	    	 detailTeams(sc);
 	        } catch(Exception e){
 	            throw new RuntimeException("Error.\nYou need to Enter a number");
 	        }

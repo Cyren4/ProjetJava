@@ -12,6 +12,7 @@ import Balles.*;
  *
  *	@summary
  *	Pour les ajouter , enlever ou juste update les GO
+ *	garde aussi une liste des objets en collision a un instant t
  *	
  */
 
@@ -29,28 +30,30 @@ public class UseGameO {
 			tmpObject.tick();
 		}
 
-		for (GameObject[] coll: collisions()) {
+		for (GameObject[] coll: collisions()) {//pour chaque couple en collision
 			GameObject o1 = coll[0];
 			GameObject o2 = coll[1];
-			System.out.println(o1 + " " + o2);
+//			System.out.println(o1 + " " + o2);//log les 2 objets en collision
 
 			if (o1 instanceof Joueur) {
-				if (o2 instanceof Souaffle) {
+				if (o2 instanceof Souaffle)
 					((Souaffle) o2).pousse((Joueur)o1);
-				} else if (o2 instanceof Cognard) {
+				else if (o2 instanceof Cognard) 
 					((Joueur)o1).getKnocked();
-				}
-			}
-			if (o1 instanceof Souaffle) {
-				if (o2 instanceof Joueur) {
+				else if (o2 instanceof VifOr) 
+					((Joueur)o1).win();
+			}		
+			if (o1 instanceof Souaffle)
+				if (o2 instanceof Joueur)
 					((Souaffle) o1).pousse((Joueur) o2);
-				}
-			}
-			if (o1 instanceof Cognard) {
-				if (o2 instanceof Joueur) {
+			
+			if (o1 instanceof Cognard)
+				if (o2 instanceof Joueur)
 					((Joueur) o2).getKnocked();
-				} 
-			}
+			
+			if (o1 instanceof VifOr)
+				if (o2 instanceof Joueur)
+					((Joueur) o2).win();
 		}
 	}
 
@@ -85,7 +88,7 @@ public class UseGameO {
 	}
 
 	
-	public Joueur getPlayer(int p) {
+	public Joueur getPlayer(int p) { //get which player according to id
 		int i = 0;
 		assert(i == 0 || i == 1);//id 0 and 1 are the only player
 		

@@ -35,11 +35,24 @@ public class Joueur extends GameObject {
 		this.c = c;
 		this.stunned = 0;
 	}
-
+	
+	public Joueur(Joueur player) {
+		super(player.team == 0 ? Jeu.WIDTH / 4 : Jeu.WIDTH * 3 / 4 , Jeu.HEIGHT / 2, player.team, 35);
+		this.name = player.name;
+		this.team = player.team;
+		this.c = player.c;
+		this.stunned = 0;
+	}
+	
 	public void getKnocked() {
 		stunned = Cognard.STUN_DURATION;
 	}
-
+	
+	public void win() {
+		System.out.println(name + " caught the Golden Snitch and won the Tornament!\nIncredible!\n");
+		Jeu.win(team);
+	}
+	
 	public int getTeam() {
 		return team;
 	}
@@ -48,14 +61,17 @@ public class Joueur extends GameObject {
 		return name;
 	}
 
+	public Joueur clone() {
+		return new Joueur(this);
+	}
+	
 	@Override
 	public void tick() {
-		if (stunned == 0) {
+		if (stunned == 0) {//si joueur pas sonne se deplace
 			x = Jeu.limit(x + velX, 0, Jeu.WIDTH-35);
 			y = Jeu.limit(y + velY, 0, Jeu.HEIGHT-60);
-		} else {
+		} else
 			stunned--;
-		}
 	}
 
 	@Override

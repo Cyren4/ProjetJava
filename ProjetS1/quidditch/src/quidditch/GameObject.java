@@ -3,7 +3,7 @@ package quidditch;
 import java.awt.Graphics ;
 
 /**
- * classe abstraite dont herite tous objets sur terrain visible avec une position
+ * classe abstraite dont heritent tous objets sur terrain visible avec une position,une taille et une vitesse
  * @author cyrena
  *
  */

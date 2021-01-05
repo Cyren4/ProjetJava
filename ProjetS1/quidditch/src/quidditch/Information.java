@@ -1,5 +1,10 @@
 package quidditch;
 
+/**
+ * classe statique affichant toute sortes d'information sur le jeu
+ * @author cyrena
+ *
+ */
 public class Information {
 	   private Information(){}
 
@@ -8,9 +13,9 @@ public class Information {
 	       
 	       System.out.println("Tired of being a simple muggle? Take your chance and enter our Quidditch Tournament.\n" + 
 	    		   "It's your turn to ride your flying broomsticks and show your talent as the best witch or wizard.\n" +
-	       			"Be a part of your favorite House in Hogwarts and bring honour to them.");
+	       			"Be a part of your favorite House in Hogwarts and bring honour to them.\n");
 	       
-	       System.out.println("A new way of playing this dangerous sport invented by author J.K. Rowling for her fantasy book series Harry Potter."); 
+	       System.out.println("A new way of playing this dangerous sport invented by author J.K. Rowling for her fantasy book series Harry Potter.\n"); 
 	     
 	       System.out.println("\nHow to play :\n"+
 	    		   "1. Choose between solo and multiplayer mode.\n"+
@@ -23,27 +28,27 @@ public class Information {
 	    public static void teams(){
 	    	 System.out.println("\nHogwarts is divided into four houses, each bearing the last name of its founder:\n"+
 		    		   "Godric Gryffindor, Salazar Slytherin, Rowena Ravenclaw and Helga Hufflepuff.\n"+
-		    		   " Pick your values and color!");
+		    		   " Pick your values and color!\n");
 	    }
 	    
 	    public static void gryffindor(){
-	    	System.out.println("Red: Gryffindor values courage, bravery, nerve, and chivalry."
+	    	System.out.println("Red: Gryffindor values courage, bravery, nerve, and chivalry.\n"
 		    		   + " Gryffindor's mascot is the lion, and its colours are scarlet red and gold\n");
 	    }
 	    
 	    public static void hufflepuff(){
-	    	System.out.println("Yellow: Hufflepuff values hard work, patience, justice, and loyalty."
+	    	System.out.println("Yellow: Hufflepuff values hard work, patience, justice, and loyalty.\n"
 		    		   + " The house mascot is the badger, and canary yellow and black \n");
 	    }
 	    
 	    public static void ravenclaw(){
-	    	System.out.println( "Blue: Ravenclaw values intelligence, learning, wisdom and wit."
-		    		   + " The house mascot is an eagle and the house colours are blue and bronze \n");
+	    	System.out.println( "Blue: Ravenclaw values intelligence, learning, wisdom and wit.\n"
+		    		   + " The house mascot is an eagle and the house colours are blue and bronze.\n");
 	    }
 	    
 	    public static void slytherin(){
-	    	System.out.println("The house mascot of Slytherin is the serpent, and the house colours are green and silver. \n" +
-		    		   " Pick your values and color!");
+	    	System.out.println("Slytherin values ambition, cunning, leadership, and resourcefulness.\n"
+	    			+ "The house mascot of Slytherin is the serpent, and the house colours are green and silver.\n");
 	    }
 	    
 	    public static void field(){
