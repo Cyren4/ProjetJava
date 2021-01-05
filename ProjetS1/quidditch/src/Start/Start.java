@@ -116,20 +116,18 @@ public final class Start {
 	    		 "\t2. Hufflepuff (blue)\n"+
 	    		 "\t3. Ravenclaw (yellow)\n"+
 	    		 "\t4. Slytherin (green)\n");
-		 try{
-	            int choice = sc.nextInt();
-	            if (choice <  1 || choice > 4) {
-	            	System.out.printf("Not valid number, try again.\n");
-	            	return chooseTeam(sc, otherTeam);
-	            }else if (choice == otherTeam) {
-	            	System.out.printf("You can't pick the same color , pick another one.\n");
-	            	return chooseTeam(sc, otherTeam);
-	            }
-	            else
-	            	return choice;
-	        } catch(Exception e){
-	            throw new TropDErreurException("You need to Enter a number");
-	        }
+		
+		int[] teams = {1,2,3,4};
+		if (otherTeam != 0) { 	//Si une équipe a déjà été choisie, on enlève du tableau.
+								//Comme on utilise un tableau statique, au lieu d'enlever on remplace par une autre valeur du tableau.
+			if (otherTeam == 1) {
+				teams[0] = teams[1];
+			} else {
+				teams[otherTeam-1] = teams[otherTeam-2];
+			}
+		} 
+
+ 		return choixVal(sc,teams);
 	}
 	
 
