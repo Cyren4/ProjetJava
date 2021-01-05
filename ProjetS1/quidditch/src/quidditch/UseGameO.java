@@ -51,7 +51,10 @@ public class UseGameO {
 				if (o2 instanceof Joueur)
 					((Joueur) o2).getKnocked();
 				if (o2 instanceof Cognard) {
-					objects.add(new Cognard((Cognard)o2)); //Quand deux cognard se cognent, un d'entre eux se dédouble
+					Cognard n = ((Cognard) o2).duplicate((Cognard) o1);
+					if (n != null) {
+						objects.add(n);
+					}
 				}
 			}
 			if (o1 instanceof VifOr)
