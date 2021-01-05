@@ -22,6 +22,12 @@ public class Cognard extends Balle{
 		velX = 2;
 		velY = 2;
 	}
+
+	public Cognard(Cognard c) {
+		super(c.x,c.y,3,25);
+		velX = -c.velX;
+		velY = -c.velY;
+	}
 	
 	public Cognard(int x, int y) {
 		super(x, y, 3, 25);

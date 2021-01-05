@@ -25,6 +25,11 @@ public final class Start {
 			System.out.println("You chose to quit the game.\nSee you soon!");
 	}
 
+
+	/**
+	* Cette fonction sert pour les menus : elle fait choisir l'utilisateur entre les différentes valeurs donné en argument.
+	* En cas d'erreur, elle renvoie l'exception TropDErreurException.
+	*/
 	private static int choixVal(Scanner sc, int[] vals) throws TropDErreurException {
 		int nbErreur = 0;
 		int choice = 0;

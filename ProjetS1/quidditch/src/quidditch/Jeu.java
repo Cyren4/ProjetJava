@@ -53,9 +53,9 @@ public class Jeu extends Canvas implements Runnable{
 	private  Jeu(Joueur[] j, int[] nbBall){
 		handler  = new UseGameO();
 		this.addKeyListener(new KeyInput(handler));
-		createWindow(WIDTH, HEIGHT, "Quidditch Tournament!", this);
+		createWindow(WIDTH, HEIGHT, "Quidditch Tournament!");
 		this.requestFocusInWindow();
-		
+
 		startSouaffle = nbBall[0];
 		nbCognard = nbBall[1];
 		vifOr = nbBall[2] == 1;
@@ -74,10 +74,13 @@ public class Jeu extends Canvas implements Runnable{
 		for(int i = 0; i < nbCognard; i++)
 			handler.addObject(new Cognard());
 		if (vifOr)	handler.addObject(new VifOr());
+
+		this.start();
+
 		
 	}
 
-	private void createWindow(int width, int height, String title, Jeu jeu) {
+	private void createWindow(int width, int height, String title) {
 		frame = new JFrame(title);
 		
 		frame.setPreferredSize(new Dimension(width, height));
@@ -87,13 +90,11 @@ public class Jeu extends Canvas implements Runnable{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
-		frame.add(jeu);
+		frame.add(this);
 		frame.setVisible(true);
-		jeu.start();
-
 	}
 
-	//choose random (code pas tres elabore mais nous permet d'effectuer plus nos test plus rapidement)
+	//choose random (code pas tres elabore mais nous permet d'effectuer nos test plus rapidement)
 	private static Jeu pickRandom(Scanner sc){
         System.out.printf("What do you want to do ? \n"+
         		"\t1. Choose your own settings!\n"+
@@ -170,16 +171,16 @@ public class Jeu extends Canvas implements Runnable{
 	//D'après un code trouvé sur internet puis modifié pour qu'il nous convienne.
 	public void run() {
 		long lastTime = System.nanoTime();
-		double amountOfTicks = 60.0;
-		double ns = 1000000000/amountOfTicks;//nb de ns par tick (reduire --> augmente nb tick)
-		double delta = 0;//nb de temps qui s'est passe depuis derniere boucle
+		double amountOfTicks = 60.0; //Nombre de tick pas seconde
+		double ns = 1000000000/amountOfTicks;//nb de ns par tick
+		double delta = 0;
 		long timer = System.currentTimeMillis();
 		int frames = 0;
 		int ticks = 0;
 		boolean new_tick = true;
 		while (running) {
 			long now = System.nanoTime();
-			delta += (now - lastTime)/ ns;
+			delta += (now - lastTime)/ ns; //Nombre de tick à effectuer
 			lastTime = now;
 			while (delta >= 1) {//si jeu en cours on update
 				tick();

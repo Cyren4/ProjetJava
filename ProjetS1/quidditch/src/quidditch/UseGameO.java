@@ -47,17 +47,23 @@ public class UseGameO {
 				if (o2 instanceof Joueur)
 					((Souaffle) o1).pousse((Joueur) o2);
 			
-			if (o1 instanceof Cognard)
+			if (o1 instanceof Cognard) {
 				if (o2 instanceof Joueur)
 					((Joueur) o2).getKnocked();
-			
+				if (o2 instanceof Cognard) {
+					objects.add(new Cognard((Cognard)o2)); //Quand deux cognard se cognent, un d'entre eux se dédouble
+				}
+			}
 			if (o1 instanceof VifOr)
 				if (o2 instanceof Joueur)
 					((Joueur) o2).win();
 		}
 	}
 
-	public void render(Graphics g) {  //affiche tous les gameObject
+	/**
+	* Cette méthode va afficher tout les objets. Elle est appelé régulièrement pour raffraichir l'écran.
+	*/
+	public void render(Graphics g) {
 		for (int i = 0; i < objects.size(); i++) {
 			GameObject tmpObject = objects.get(i);
 			tmpObject.render(g);
