@@ -53,24 +53,59 @@ Ajout d’un IA contre qui jouer (possibilité de programmer son ia pour en affr
 Classes :
 ---------
 [diagramme UML]
-http://www.plantuml.com/plantuml/png/RLDDRvj043rtVyL8FIPMt0_rGbl5TPtORIHBWJJjSO0XsMgPjNONQXVvltTP42Ok5nRclNapysQvjWwDgqebCeNMmgFaNFy1sZlYtC8IkKOBpL68PS2_KNKEodAdg2Hs5kuhPamLGICklB2J6HIIKO5a1u-RhyaQFi6R-NmUmGHXlThShXFF-F1-7atWSRAuJ-BjmytDtSgptaNYbPWbpuOm1nUEICnIhHKXW_6jI7xol0AL9OyyMBh5ahRmZ9mhCf4GirQMqrXNHQ6eq-nZI_t4Q78VUpjIhMMnDJxcJEKblIkOMcSmSz3P5mgalya76l4wTBs_X4FKlzUaVbwspr_HrLKj7LbBuc8qeioZ5zzM_ktgTFB328rO68E7EsdTnrFDpw33UKhuJeSDxoetxCm75Zdk79b6pE1_IqwBrXLLPiWR3pPq63lJMiowVDcr8nn5bbff0zb8UxNFQEUavbWR9oaXOr3oK6k0csEViE4QbSp3A9EqypryGQLeklcJENxjM1GZNiXgVUckNfWb_1yGJPerAFMNvKpesAC_mgKvntfmmuKs9RPpW8zUUqvLgdy0
+http://www.plantuml.com/plantuml/png/bLPHRo8t47xk_WehUTbJG4UbgY-qf-C8ISYTI1J8tKLLLPdT0PmOUy_sab34Vw_7NemXZgfxO1VFV3F-_EsCxO_QK6Ng9SygMZpHEP2JCLfEDbd1gTR4ZJRPsSO23IksX0dprz_soSmdohdEnmKL0jIxReIvbZNKge7TShe6bS9XBb8ifDGm0RhSGLfeVuLpH9DPLfAL5ZAJRtjBC9Jn8y9f43A9GTiiwpib9afMvmEbe5Q3bm8gmwGWy690b9e4osQB4K7C7pKhIsQAXHMqoNCDTGZhKx6Ych1bnM49mcXoLmj1fnp89ckJm0zZXgFnf3Vg3sBUCoOeT_9y6vvFhiYVvDTEfzCbISZLO7XvDR6Ott_hs2J1uQKTovhEPXowsIzP-_f2qIMGcNrQGtkoK41BOjpBZgTISg22A4kMYRbDEQDS8_9UmwMDkI4BAaeEgfjbxHqLd6hqQNnptxku-3AmGHqRW4OnxSkve2fElMAp6sKnHjMOzwZynlsREyomwRH8PnlxG-bLjkpy_5QyF9WVMqqACSLoy5KGgNm9PYYiGHIGMsVRLKQXW1hunaGfdtCRtiBVs2YxzfODGjn1aeeLJtVKeaDD8oJta7TxZifXcWP1Alb1GSubvRdlXUnChqMnK5AmVw7qRjyHrfdqoSgvt4ZLOhyO1Hemp6kFClNcb7c03pQMVemN9T8xRaZEbinuDVplTKSzCu40tqLqgesYXI5-Ot5bCdq4QzXafoxZIukikyt_5V3lBNm-TD-_Np43MaDs5bKpAxi7OsqNZpg5l9uRYH-Uuex8Dbfjoj4i_5BHQi4AJUO8mgdcjaRAF1fzZmSFUzqrkgmvDZmS6xxQbIPi7XVIUbWyHaYyF_cg2bjBh6yGojSi4N9vA9u16bdwaaj5YgP2jAc5W1ArzLFaFelxx0wAh1gNVuMbM9wVXIoUmCiLYY9QnyHFxNEYOMI9v_kKfE1IUCFXvqf_8w-8Bx7Fi1wAgZP14slebRGoe71tJUnLPxkGVESCCpt1-bPX5PQv1GrM84pikmCED7Pw8WsJCDKcwob5rr-ODd_ilz078jqR6Vp_8j6Uo68tjG-aa9mppQJG-t1QbXwGxx5HxgLSGSeVP1oAcLHBwiwxpN6BFqATlsvyh2UTiC_LUZR3RLGbd8iQpv_AFXDEHQsebizpmgVvsYn0CP7mpHZmCc6VKivJ37_uKr2dGdXTpa4broLv2M8iyAJtJRdDebi0dZIWJpR7Uw2pfplsrDsDP2rSKJXWlDVYxusMO4Ap4d1ycggUbc_l-0CtHtzWudczrI8xT6YHXalxy5f7UL7pMquBoD_cMibQQuXsZHJZc6fpKJXcchhkZ2Vtet_Ex-zwa-7D26yz7MI_o-0uxFu7GOFfftQTcE1NlBSSqujkDPfDEI0H1_o92N2AZzPSB_b_
 
 ```uml
 @startuml
-class Window extends Canvas {}
+package "Start"{
+class Start{
++{static} int[] initBalls(Scanner);
++{static} Joueur[] initPlayer(Scanner);
++{static} int chooseTeam(Scanner, int);
++{static} int start(Scanner);
++{static} void info(Scanner);
++{static} void detailBalls(Scanner);
++{static} void detailTeams(Scanner);
+}
+
+Class TropDErreurException extends Exception{}
+}
+
+package "quidditch"{
 
 Class Jeu extends Canvas implements Runnable {
-+static final int WIDTH = 1000; 
-+static final int HEIGHT = 640;
-+static final int STARTSOUFFLE = 3;
+- {static} Jeu INSTANCE;
++{static} final int WIDTH = 1000; 
++{static} final int HEIGHT = 640;
++final int startSouaffle;
 	
+-JFrame frame;
 -Thread thread;
 -boolean running = false;
 -UseGameO handler;
 
--int nbSouffle = 3;
--int nbCognard = 2;
+-{static}int NBSOUAFFLE = 0;
+-int nbCognard;
 -boolean vifOr = true;
+-{static} int[] SCORE = {0, 0};
+-{static} Joueur[] player;
+
+-Jeu(Joueur[] j, int[] nbBall);
++{static} Jeu GetInstance();
+-void createWindow(int,int,String,Jeu);
+-{static} Jeu pickRandom(Scanner);
+-(static) Joueur[] randomPlayer();
++(static} void goal(int);
+
++synchronized void start();
++synchronized void stop();
++void run();
+-void reset();
+-int playAgain();
+- void tick();
+-void render();
++{static} int limit(int,int,int);
++{static} void win(int);
 }
 
 abstract class GameObject {
@@ -78,38 +113,111 @@ abstract class GameObject {
 # int velX, velY;//vitesse
 + final int id;
 + final int size;
-}
 
-class UseGameO {
-ArrayList<GameObject> object
-}
-
-class KeyInput extends KeyAdapter{
-- UseGameO handler;
++GameObject(int, int, int, int);
++{abstract} void tick();
++{abstract} void render(Graphics g);
++int getId();
++int getX();
++int getY();
++void setX(int);
++void setY(int);
++void setVelX(int);
++void setVelY(int);
++int getVelX();
++int getVelY();
 }
 
 Class Joueur extends GameObject {
 + final String nom;
 + final int team;
 + final Color c;
+-int stunned;
+
++Joueur(String,int,Color);
++Joueur(Joueur);
++void getKnocked();
++void win();
++int getTeam;
++String getName();
++Joueur clone();
++void tick();
++void render(Graphics g);
 }
 
-Class ExceptionSortieTerrain extends Exception{}
-Class InvalidInput extends Exception{}
+class KeyInput extends KeyAdapter{
+- UseGameO handler;
 
++KeyInput(UseGameO);
++void keyPressed(KeyEvent);
++void keyReleased(KeyEvent);
+}
+
+
+class UseGameO {
+ArrayList<GameObject> object;
+
++void tick();
++void render(Graphics);
++ArrayList<GameObject[]> collisions();
++void addObject(GameObject);
++void removeObject(GameObject);
+}
+
+class Information {
++{static} void jeu();
++{static} void teams();
++{static} void gryffindor();
++{static} void hufflepuff();
++{static} void ravenclaw();
++{static} void slytherin();
++{static} void field();
++{static} void balls();
++{static} void quaffles();
++{static} void bludgers();
++{static} void goldenSnitch();
+}
+}
+
+
+package "Balles"{
 abstract class Balle extends GameObject {
+#int count;
 
++Balle(int,int,int,int);
++void tick();
++void inside();
+#void render(Graphics, Color);
 }
 
 class Souaffle extends Balle{
-- static int start ;
 - UseGameO handler;
+
++Souaffle(UseGameO,int);
+-{static} int calculPlace(int);
++void tick();
++void pousse(Joueur);
++void render(Graphics);
 }
 
-class Cognard extends Balle{}
-class VifOr extends Balle{}
+class Cognard extends Balle{
++{static} final int STUN_DURATION = 60;
 
-class Information {}
++ Cognard();
++Cognard(int,int);
++Cognard clone();
++void tick();
++void render(Graphics);
+}
+
+class VifOr extends Balle{
+-boolean visible;
+
++VifOr();
++void tick();
++void render(Graphics);
+}
+}
 @enduml
 ```
 
