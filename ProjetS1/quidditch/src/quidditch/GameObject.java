@@ -1,13 +1,15 @@
 package quidditch;
 
-import java.awt.Graphics ;
+import java.awt.Graphics;
+import Start.Saveable;
+
 
 /**
  * classe abstraite dont heritent tous objets sur terrain visible avec une position,une taille et une vitesse
  * @author cyrena
  *
  */
-public abstract class GameObject implements Affichable{
+public abstract class GameObject implements Saveable{
 	protected int x, y;//position
 	protected int velX, velY;//vitesse
 	public final int id;
@@ -59,5 +61,9 @@ public abstract class GameObject implements Affichable{
 	
 	public int getVelY() {
 		return velY;
+	}
+
+	public void save(String file) {
+		Saveable.write_to_file(this.getClass() + "[x:"+x+", y:",+y+", velX:"+velX+", velY:"+velY+"]\n");
 	}
 }

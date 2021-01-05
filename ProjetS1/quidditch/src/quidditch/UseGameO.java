@@ -3,6 +3,7 @@ package quidditch;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import Balles.*;
+import Start.Saveable;
 //import java.util.LinkedList;
 
 /**
@@ -16,7 +17,7 @@ import Balles.*;
  *	
  */
 
-public class UseGameO {
+public class UseGameO implements Saveable {
 	ArrayList<GameObject> objects = new ArrayList<GameObject>();
 	
 
@@ -115,5 +116,11 @@ public class UseGameO {
 	
 	public void removeObject(GameObject supObject) {
 		objects.remove(supObject);
+	}
+
+	public void save(String file) {
+		for (GameObject ob: objects) {
+			ob.save(file);
+		}
 	}
 }

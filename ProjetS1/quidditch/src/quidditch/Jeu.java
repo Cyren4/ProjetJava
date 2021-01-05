@@ -23,7 +23,7 @@ import java.io.*;
  * - Les balles 
  */
 
-public class Jeu extends Canvas implements Runnable{
+public class Jeu extends Canvas implements Runnable, Saveable{
 	
 	private static Jeu INSTANCE;
 	
@@ -36,10 +36,10 @@ public class Jeu extends Canvas implements Runnable{
 	private boolean running = false;
 	private UseGameO handler;
 
-	private static int NBSOUAFFLE = 0;
+	private static int NbSouaffle = 0;
 	private int nbCognard;
 	private boolean vifOr = true;
-	private static int[] SCORE = {0, 0};
+	private static int[] score = {0, 0};
 	private static Joueur[] player;
 	
 	
@@ -69,7 +69,7 @@ public class Jeu extends Canvas implements Runnable{
 		
 		for(int i = 0; i < startSouaffle; i++) {
 			handler.addObject(new Souaffle(handler, startSouaffle));
-			NBSOUAFFLE++;
+			NbSouaffle++;
 		}
 		for(int i = 0; i < nbCognard; i++)
 			handler.addObject(new Cognard());
@@ -127,19 +127,19 @@ public class Jeu extends Canvas implements Runnable{
 	}
 	
 	public static int getNbSouaffle() {
-		return NBSOUAFFLE;
+		return NbSouaffle;
 	}
 
 	public static void goal(int team) {
-		SCORE[team]++;
-		System.out.println("Current score : " + SCORE[0] +"\t-\t"+ SCORE[1] + "\n");
-		if (SCORE[0] == SCORE[1])
+		score[team]++;
+		System.out.println("Current score : " + score[0] +"\t-\t"+ score[1] + "\n");
+		if (score[0] == score[1])
 			System.out.println("The battle is fierce both player are ex aequo!\n");
 		else
-			System.out.println(player[SCORE[0] > SCORE[1]? 0 : 1].getName() + " takes the lead!\n");
-		NBSOUAFFLE--;
-		if (NBSOUAFFLE == 0)
-			System.out.println(player[SCORE[0] > SCORE[1]? 0 : 1].getName() + " won the tournament!\n");
+			System.out.println(player[score[0] > score[1]? 0 : 1].getName() + " takes the lead!\n");
+		NbSouaffle--;
+		if (NbSouaffle == 0)
+			System.out.println(player[score[0] > score[1]? 0 : 1].getName() + " won the tournament!\n");
 	}
 	
 	// start thread of game
@@ -151,8 +151,8 @@ public class Jeu extends Canvas implements Runnable{
 	
 	private void reset() {
 		INSTANCE = null;
-		SCORE[0] = 0;
-		SCORE[1] = 0;
+		score[0] = 0;
+		score[1] = 0;
 		GetInstance();
 	}
 	
@@ -201,11 +201,12 @@ public class Jeu extends Canvas implements Runnable{
 				frames = 0;
 				ticks = 0;
 			}
-			if (NBSOUAFFLE == 0) {
+			if (NbSouaffle == 0) {
 				
 				if (playAgain() == 1)
 					reset();
-				else { 
+				else {
+					save("save.quidditch");
 					frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
 					break;
 				}
@@ -277,7 +278,15 @@ public class Jeu extends Canvas implements Runnable{
 	}
 
 	public static void win(int team) {
-		NBSOUAFFLE = 0;
+		NbSouaffle = 0;
+	}
+
+	@Override
+	public void save(String file) {
+		handler.save(file);
+		String output = player[0].name + "(team " + player[0].team+") : " + score[0] + "pts\n";
+		output += player[1].name + "(team " + player[1].team+") : " + score[1] + "pts\n";
+		Saveable.write_to_file(file,output);
 	}
 	
 }
