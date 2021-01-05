@@ -232,9 +232,13 @@ public class Jeu extends Canvas implements Runnable{
 		handler.tick();
 	}
 	
-	//can create buffers at the launch of the game(bc null at beginning)
-	// fill the window with one color and the goals
+	
 	private void render() {
+		/**
+		 * can create buffers at the launch of the game(bc null at beginning)
+		 * fill the window with one color and the goals
+		 */
+	
 		BufferStrategy bs = this.getBufferStrategy();
 		if (bs == null) {
 			this.createBufferStrategy(3);//nb of buffer recommended
@@ -257,7 +261,13 @@ public class Jeu extends Canvas implements Runnable{
 		bs.show();
 	}
 	
-	//empeche les joueurs de sortir du terrain
+	/**
+	 * //empeche les joueurs de sortir du terrain
+	 * @param x
+	 * @param min
+	 * @param max
+	 * @return
+	 */
 	public static int limit(int x, int min, int max) {
 		if (x >= max) return max;
 		else if (x <= min) return min;
