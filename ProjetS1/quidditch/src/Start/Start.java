@@ -24,6 +24,28 @@ public final class Start {
 		else
 			System.out.println("You chose to quit the game.\nSee you soon!");
 	}
+
+	private static int choixVal(Scanner sc, int[] vals) throws TropDErreurException {
+		int nbErreur = 0;
+		int choice = 0;
+		boolean ok = false;
+
+        while (!ok) {
+			choice = sc.nextInt();
+			for (int val:vals) {
+				if (choice == val) {
+					ok = true;
+					break;
+				}
+			}
+			if (!ok) {
+				nbErreur++;
+					if (nbErreur > 4) throw new TropDErreurException("Nombre non valide");
+				System.out.printf("Not valid number, try again.\n");
+			}
+		}
+		return choice;
+	}
 	
 	//Donne le choix au joueur du nombre de souaffle, Cognard et Vif d'Or
 	public static int[] initBalls(Scanner sc) throws TropDErreurException {
@@ -34,42 +56,18 @@ public final class Start {
 		try{
 			 	System.out.printf("How many Quaffles do you want?\n"+
 					 "\t 3 or 5 ? \n");
-	            do  {
-            		choice = sc.nextInt();
-	            	if(choice !=  3 && choice != 5) {
-	            		nbErreur++;
-	            		if (nbErreur > 4) 
-	            			if (nbErreur > 4) throw new TropDErreurException("Erreur dans le choix du nombre de Souaffle");
-	            			System.out.printf("Not valid number, try again.\n");
-	            	}
-
-	            }while (choice !=  3 && choice != 5);
-	            nbBalls[0] = choice;
+	            int[] nb_souaffle = {3,5};
+	            nbBalls[0] = choixVal(sc,nb_souaffle);
 	            
 	            System.out.printf("How many Bludgers do you want?\n"+
 	   				 "\t 0, 1 or 2 ? \n");
-	            do  {
-	            	choice = sc.nextInt();
-	            	if(choice < 0 || choice > 2){
-	            		nbErreur++;
-	            		if (nbErreur > 4) throw new TropDErreurException("Erreur dans le choix du nombre de Cognard");
-	            		System.out.printf("Not valid number, try again.\n");
-	            	}
-	            }while (choice < 0 || choice > 2);
-	            nbBalls[1] = choice;
+	            int[] nb_cognards = {0,1,2};
+	            nbBalls[1] = choixVal(sc,nb_cognards);
 	            
 	            System.out.printf("How many goldenSnitch do you want?\n"+
 		   				 "\t 0 or 1 ? \n");
-	            do  {
-	            	choice = sc.nextInt();
-	            	if(choice < 0 || choice > 1){
-	            		nbErreur++;
-	            		if (nbErreur > 4) throw new TropDErreurException("Erreur dans le choix du nombre de Vif d'or");
-
-	            		System.out.printf("Not valid number, try again.\n");
-	            	}
-	            }while (choice < 0 || choice > 1);
-	            nbBalls[2] = choice;
+	            int[] nb_vif = {0,1};
+	            nbBalls[2] = choixVal(sc,nb_vif);
 	           
 	} catch(Exception e){
 		throw new TropDErreurException("You need to Enter a number");
