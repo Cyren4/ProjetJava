@@ -27,9 +27,13 @@ public class Souaffle extends Balle{
 		return nbStart == 3 ? 100 + Jeu.getNbSouaffle() * implement : 50 + Jeu.getNbSouaffle() * implement;
 	}
 	
-	//interraction avec joueur
+	/**
+	 * interraction avec joueur
+	 * une vitesse decroissante, aka force de frottement (en fonction des ticks)
+	 * si le souaffle rentre dans l'un des but ca augmente le score de l'equipe adverse
+	 */
 	public void tick() {
-		//   une vitesse decroissante, aka force de frottement (en fonction des ticks)
+		
 		if (count == 70){
 			if (velX > 0) velX--;
 			if (velX < 0) velX++;
@@ -39,7 +43,7 @@ public class Souaffle extends Balle{
 		} else
 			count++;
 	
-//On verifie si le souaffle n'entre pas dans une des cages
+		//On verifie si le souaffle n'entre pas dans une des cages
 		if ( y >= 180 && y <= 360) { 
 			if (x <= 5) {//entre dans goal gauche
 				System.out.println("Team 2 Scored!\n"); // ajouter le score a l'equipe 1
@@ -52,19 +56,25 @@ public class Souaffle extends Balle{
 				Jeu.goal(0);
 			}
 		}
-//empeche la balle de sortir
+		//empeche la balle de sortir
 		x = Jeu.limit(x + velX, 0, Jeu.WIDTH-35);
 		y = Jeu.limit(y + velY, 0, Jeu.HEIGHT-60);
 		super.tick();//keep balls inside
 	}
 
-//gagne la vitesse du joueur avec lequel le souaffle entre en collision
+	/**
+	 * gagne la vitesse du joueur avec lequel le souaffle entre en collision
+	 * @param j
+	 */
 	public void pousse(Joueur j) {
 		velX += j.getVelX();
 		velY += j.getVelY();
 	}
 
+	/**
+	 * cercle couleur magenta
+	 */
 	public void render(Graphics g) {
-		super.render(g, Color.magenta);//couleur magenta
+		super.render(g, Color.magenta);
 	}
 }

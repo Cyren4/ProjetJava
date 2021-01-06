@@ -19,6 +19,10 @@ public class VifOr extends Balle{
 		visible = true;
 	}
 	
+	/**
+	 * est invisible pendant count tick (nombre aleatoire entre 50 et 100)
+	 * alterne entre etre visible et invisible et change de position a cette alternance
+	 */
 	@Override
 	public void tick() {
 		if ( 0 > count)	{
@@ -30,6 +34,9 @@ public class VifOr extends Balle{
 			count--;
 	}
 
+	/**
+	 * cercle couleur jaune
+	 */
 	public void render(Graphics g) {
 		super.render(g, Color.yellow);
 	}

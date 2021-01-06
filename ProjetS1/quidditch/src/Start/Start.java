@@ -17,6 +17,10 @@ public final class Start {
 	
 	private Start(){}
 	
+	/**
+	 * si l'utilisateur decide de quitter le programme s'arrete sinon le jeu commence
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		if(start(sc) == 1)
@@ -51,7 +55,12 @@ public final class Start {
 		return choice;
 	}
 	
-	//Donne le choix au joueur du nombre de souaffle, Cognard et Vif d'Or
+	/**
+	 * Donne le choix au joueur du nombre de souaffle, Cognard et Vif d'Or
+	 * @param sc
+	 * @return
+	 * @throws TropDErreurException
+	 */
 	public static int[] initBalls(Scanner sc) throws TropDErreurException {
 		int[] nbBalls = new int[3];
 		int choice;
@@ -79,13 +88,18 @@ public final class Start {
 		 return nbBalls;
 	}
 	
-	//Donne le choix au joueur de sa couleur(equipe) entre Gryffondor / Poufsouffle / Serdaigle / Serpentard
+	/**
+	 * Interprete le choix des joueur et cree le joueur
+	 * @param sc
+	 * @return
+	 * @throws TropDErreurException
+	 */
 	public static Joueur[] initPlayer(Scanner sc) throws TropDErreurException {
 		Joueur[] player = new Joueur[2];
 		int otherTeam = 0;
 		String name;
 		int team;
-		int nbErreur = 0; //Au bout de 4 erreurs tout les paramètres seront choisis aléatoirement
+		int nbErreur = 0; 
 		try{
 			for (int i = 0 ; i < 2; i++) {
 				System.out.println("Player " + (i+1) + " : \nEnter your Name : \n");
@@ -114,6 +128,14 @@ public final class Start {
 		return player;
 	}
 	
+	/**
+	 * Donne le choix au joueur de sa couleur(equipe) entre Gryffondor / Poufsouffle / Serdaigle / Serpentard
+	 * si trop d'erreur sont fait l'exception TropDErreurException est lancee
+	 * Au bout de 4 erreurs tout les paramètres seront choisis aléatoirement
+	 * @param sc
+	 * @return
+	 * @throws TropDErreurException
+	 */
 	public static int chooseTeam(Scanner sc, int otherTeam) throws TropDErreurException{
 		System.out.printf("Which team do you want to join? \n"+
 				 "\t1. Gryffindor (red)\n"+
@@ -135,13 +157,17 @@ public final class Start {
 	}
 	
 
-	//menu de depart 
+	/**
+	 * menu de depart 
+	 * @param sc
+	 * @return
+	 */
 	public static int start(Scanner sc){
         System.out.printf("What do you want to do ? \n"+
         		"\t1. Start Quiddich Tournament !\n"+
         		"\t2. Information\n"+
         		"\t3. Quit\n");
-        //try/catch affiche un message d'erreur si un int n'est pas rentré dans ligne de commande
+      //try/catch affiche un message d'erreur si un int n'est pas rentré dans ligne de commande
         try{
             int choice = sc.nextInt();
             sc.nextLine();
@@ -155,7 +181,10 @@ public final class Start {
         }
     }
 	
-	//menu d'information
+	/**
+	 * menu d'informations
+	 * @param sc
+	 */
 	public static void info(Scanner sc){
         System.out.printf("Which information do you want?\n"+
         		"\t1. Game\n"+
@@ -181,6 +210,10 @@ public final class Start {
         }
     }
 
+	/**
+	 * menu detail des balles
+	 * @param sc
+	 */
 	private static void detailBalls(Scanner sc) {
 		 Information.balls();
 	     System.out.printf("Which Ball information do you want?\n"+
@@ -205,7 +238,10 @@ public final class Start {
 	            throw new RuntimeException("Error.\nYou need to Enter a number");
 	        }
 	}
-
+	/**
+	 * menu detail des equipes
+	 * @param sc
+	 */
 	private static void detailTeams(Scanner sc) {
 		 Information.teams();
 	     System.out.printf("Which Team information do you want?\n"+
