@@ -6,6 +6,7 @@ import java.io.*;
 
 public interface Saveable {
 	public void save(String file);
+	
 	public static void write_to_file(String fileName, String text) {
 		try {
 			FileWriter file = new FileWriter(fileName);
