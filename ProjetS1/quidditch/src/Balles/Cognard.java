@@ -6,7 +6,7 @@ import java.util.Random;
 import quidditch.*;
 
 /**
- * /**
+ *
  * Les cognards sont toujours mobile et apparaissent aleatoirement sur le terrain au debut
  * leur vitesse est constante
  * On peut avoir 0,1 ou 2 Cognards au depart.

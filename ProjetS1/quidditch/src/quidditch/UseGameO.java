@@ -82,7 +82,7 @@ public class UseGameO implements Saveable {
 		ArrayList<GameObject[]> lst = new ArrayList<GameObject[]>();
 		for (int i=0; i < objects.size();i++) {
 			GameObject object = objects.get(i);
-			for (int j=i+1; j < objects.size(); j++) { //On ne teste que les objets derrières pour ne pas avoir deux fois les couples.
+			for (int j=i+1; j < objects.size(); j++) { //On ne teste que les objets plus loin dans la liste pour ne pas avoir deux fois les couples.
 				GameObject other_object = objects.get(j);
 				int diff_x_1 = Integer.signum(object.getX() - other_object.getX() - other_object.size);
 				int diff_x_2 = Integer.signum(object.getX() + object.size - other_object.getX());
@@ -118,6 +118,10 @@ public class UseGameO implements Saveable {
 		objects.remove(supObject);
 	}
 
+	/**
+	* Suvegarde les informations sur les objets dans le fichier.
+	* Ecris une ligne par GameObject.
+	*/
 	public void save(String file) {
 		for (GameObject ob: objects) {
 			ob.save(file);

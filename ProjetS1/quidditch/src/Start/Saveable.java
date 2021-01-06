@@ -3,7 +3,9 @@ package Start;
 import java.io.*;
 
 
-
+/**
+* Interface permettant de sauvegarder les informations importantes dans un fichier.
+*/
 public interface Saveable {
 	public void save(String file);
 	
