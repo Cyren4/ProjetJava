@@ -63,7 +63,11 @@ public abstract class GameObject implements Saveable{
 		return velY;
 	}
 
+
+	/**
+	* Sauvegarde dans le fichier passé en argument les coordonnées, la vitesse, et le type de l'objets.
+	*/
 	public void save(String file) {
-		Saveable.write_to_file(this.getClass() + "[x:"+x+", y:",+y+", velX:"+velX+", velY:"+velY+"]\n");
+		Saveable.write_to_file(file,this.getClass() + "[x:"+x+", y:"+y+", velX:"+velX+", velY:"+velY+"]\n");
 	}
 }

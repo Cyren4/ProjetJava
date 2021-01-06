@@ -44,6 +44,9 @@ public class Joueur extends GameObject {
 		this.stunned = 0;
 	}
 	
+	/**
+	* Appelé quand un cognard cogne un joueur, le joueur reste immobile pendant Cognard.STUN_DURATION
+	*/
 	public void getKnocked() {
 		stunned = Cognard.STUN_DURATION;
 	}

@@ -81,6 +81,7 @@ public class Jeu extends Canvas implements Runnable, Saveable{
 	}
 
 	private void createWindow(int width, int height, String title) {
+		//Créé et configure la fenêtre
 		frame = new JFrame(title);
 		
 		frame.setPreferredSize(new Dimension(width, height));
@@ -168,7 +169,8 @@ public class Jeu extends Canvas implements Runnable, Saveable{
 		
 	}
 	
-	//D'après un code trouvé sur internet puis modifié pour qu'il nous convienne.
+	//D'après un code trouvé sur internet (https://gamedev.net/forums/topic/687454-understanding-game-loops/5337108/)
+	//puis modifié pour qu'il nous convienne.
 	public void run() {
 		long lastTime = System.nanoTime();
 		double amountOfTicks = 60.0; //Nombre de tick pas seconde
