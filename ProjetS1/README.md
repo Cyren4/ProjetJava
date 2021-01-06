@@ -52,7 +52,7 @@ Ajout d’un IA contre qui jouer (possibilité de programmer son ia pour en affr
 
 Classes :
 ---------
-http://www.plantuml.com/plantuml/uml/bLPHRnev47w-_HLM-x9LGEMaqxrmLvLIaf1M90gaRLHL9xCx2qwClRMz91pAVp-FlHX379qgn89dlXb__dR6zdjjg3BDYcSrBUxf0iYhALfURRE2Kws96sspawq56bOy4IRCzn_soSm7ohdEfmKL0jIRVeIva0qqgeLTSRe1bS9XBb8ifTGm0xhQGJfeVuPpH9DPrfAL5bB9bxqb6Chu4U4q29d4eASi6pebPahM7qTAGQD6ZmNKXab1uD60A3K9bkqJHWGnVpQiB9afbbRGDiy5D25iICMQQi9MDOSL2AF9TIC4dNCWswnB0Z-C6K-ciy5aE8fvLqnGxkJvEluuEoT_azzxlLwV927de_7P-SnY_loZPvC4XvTsAXjQLHpwsMzPz-9KqHMGoZwjeJjRAg0bCUx7ZkTISg22A4kMYOLDML6k4NcZuSp6N98b5IK7rS-oxeuAJZNvCBsy6PoUVXxPe9uDGAEO3-L2K1MdNhFgKbcCKGtcFIg_wV3o6ZDiUntIUmh-kFHgLtOulnKl3-QxJfj2pB4SN1N4Af-16Gjh40NarjbrbL4ee0Q-Cb7AXzo6T_0xDSgklME347UGf6R5_JMrw53J2CazvCsUetAOja6GIdvGa0j9UUvx8JlH6r4ibHJiNoYzstU4TIPzidOkDrADs2z6WGOCyzgZJ8C5PHxWWusb7-D5YVIE6vAp5JD13Vjztb4FJ230Tr56vzeeMXZYTnPN9_Cxi8PjzjgbVEoGJR_zlmR-hOFFs_xRjsjcG6l8Jg9oPcN_OApjwb6eaDUJ8_73SzmHUOgMctAqApzJj5woGfC5Wd2gXIsICez6t-B1xLvuZIvhZWstnuOlTgK9My3vj1uMZn4IRr2-hCBU4kiRXF95IuHS7OfdW4QMeUHIaQ8j4MqQ8Q14RVqKkS_Ythk38glMvN_2KYpFJq8Mz-3b2bKHhMFcf_OvqJ2nnFDzIb9mARpXy7Mbtv5Nn9VO9zYCHTsOe8ar34fQ6r2ulIOsgvDTIBvpXfdkONEbi0hBt896Qn0czbq31nexFP6MIPXgcmsKeflFJ9k_zc_e7P7k5ndy_oBHdiho_SSxKaZEcMPIw7quBSks8VROAFTAhY7b3pAEHINLYhe3RtlSutVGvCyx7-j99-mBjQagt4TLmhbiy02gxJFXLDIAQlay97oQRymI51C9NyM0bmdxd7AUOlZJ7uCw5SARSW4gkIx9In1JWKUzQqhxYQu1UDI0VhKztWETFTsnhztbI3R25OK3nfijVbze2IOqAm77hrFLq_7j7R_WzkmFJ3olbrfaXmujqdBf7jxhA2yQViLf0VdBN6lPQ0tHhf5Y75DjRmf7J9FtdUdiPlBFnvlhmMnyES5hJm_Pxp8u3hl_GT1W-gLT9oRu1IykH_JYQurcSmv8n05_OGBxUM-jpOh_1m00
+http://www.plantuml.com/plantuml/uml/bLRVRngv4t_-xbzXfIzR1LI-qkbUkAjA2KrfAr85qXywdIBZdGKdnjxQNX8EvNy_pthN6Ef8lGTsySp7Cn-FPsRdZR5KsteZiegoUxe2SZP7oTa-Ou8QGvhLFZlVEw3bx8bmQV_wspsvVKk5CFcSKIb1lnn6c0-gXbgtiC-2xa2dS6YBiBLI1XP0DnsaX_AVS0tHf9MjueM3bEfvRG6MSd5AE0b29Z7eASl6JIGMMbKN4wsXrfD71fNbIX9uj20BGu9ax_2EBkYICY1pkWMw5E02sBWmRftFhUPozRF_1yqjt5frMtBHeNeae9-GIhYb7pKl2cxP-cpV4Vm0TU0pfd9B3U6RIi06f3NakfOIgVGwJcIVzKbWW9kdi_bYD1jFOcObbrGq5_1rUh5uJ_ua_nyC1aEIXBoVJ2_VBnpczzy6paXG-CkRgvgMfO1Xzh-i_-6TfXiWfNiwGN-nra0BOfkNMo-L4a0bqOwrExupML9X47bZuDBjkI9hAWi1UfXb_OuAkfgzdL_TZDwz-pHncmPk0mhbSgnMakhOz9QNLzfXhAxHxac2pyTNrsXXF-YHmLEi3ybT2Rhp_btmyY2-wxKcv18Jpjzp5ELBi5Ff1991xfJzvkwP1chXAvU5UiZTzXx-sXHmcn1tPAJYxFwQEdIe6eJa7lBom54tcBO4aKf-b78hHKNkgoqxDpl9rbf9_WyKNkrhpYcJEbKrAbpXFHqEey40RlEnnp2DLfHxWDzi7VqOBmkaTrhoWc-u3T5mlqJDSEdvfmeC2oQZIsCrPPRuVjRapl8Ec8sA8whJ5utdnnxP3Tl_Mn3VUlZyFdprQiij60FPUPJrl1WUhOqB4iOpkF9d8F737wNZzXH79Q5e0tIfQRNcp90LWj3L2koqoAFLjtZnFJ_41LL7WKBrYU2BEsb25d3Uh8V5QuJ4dT9dN-X5KSZt8L3-ZeXKc-FWMQ2HPAo4qeIrcMHiBIKK65lleckI6DG6YgnQbN-5epYU7wLYz-335P8dEiV2k_OsKJ1pnFE3ISA4abvmV5tfEte-9tqcVeJTL5Qr3N5oWb51AmiQEtEYpvrtM_9E6NpSm-wpnimiSWUQR47QM7SD0cYiz4HQ9i7LFXjfJNUVkB5_76xjDL7DUvZzoi5Hdh3Y6k9hmfGGt70bpM4xBGeFo0_OoFP6RI6b3s6SobBf3Ms-nllJzd07DNewaMAEcOHyfNTbYIrO9vJh6hzTbNicb9gwe3e-3mcT4Jkx1irbGbTo44L2lgH2f1Z-y5zGazeYwc85Edak9GgGSudZGjvE4j4eWLyfC6VxqrRPoDDL_AAPt5GjcwHeW76VnjypPSAbuGNW-aKgUtg-vECBzcD3ODBoUgv4EdGeaPPB_tZef8BLuhEW3FBdkLQgDWRYJf9W75DjXumJfibHQRwucTrUt5oF5jEh6KvC0sJVMMWuTFz3G8FeFtKYb7Sp3wFoegu4PzH2x8CKGTfAucDzmKdfz53H76NuKW3IRu2_JWlpy8sJrXlnBm00
 
 ```uml
 @startuml
@@ -68,11 +68,16 @@ class Start{
 }
 
 Class TropDErreurException extends Exception{}
+
+interface Saveable{
++void save(String);
++{static} void write_to_file(String, String);
+}
 }
 
 package "quidditch"{
 
-Class Jeu extends Canvas implements Runnable {
+Class Jeu extends Canvas implements Runnable,Saveable {
 - {static} Jeu INSTANCE;
 +{static} final int WIDTH = 1000; 
 +{static} final int HEIGHT = 640;
@@ -105,9 +110,11 @@ Class Jeu extends Canvas implements Runnable {
 -void render();
 +{static} int limit(int,int,int);
 +{static} void win(int);
++void save(String);
 }
 
-abstract class GameObject {
+
+abstract class GameObject implements Saveable{
 # int x, y;
 # int velX, velY;//vitesse
 + final int id;
@@ -142,6 +149,7 @@ Class Joueur extends GameObject {
 +Joueur clone();
 +void tick();
 +void render(Graphics g);
++void save(String);
 }
 
 class KeyInput extends KeyAdapter{
@@ -207,6 +215,8 @@ class Cognard extends Balle{
 +Cognard clone();
 +void tick();
 +void render(Graphics);
++boolean canDuplicate();
++Cognard duplicate(Cognard);
 }
 
 class VifOr extends Balle{
@@ -219,7 +229,3 @@ class VifOr extends Balle{
 }
 @enduml
 ```
-
-Old Version : 
-
-[diagramme UML](http://www.plantuml.com/plantuml/uml/dP2nJW91441hvokcX91hh8q1YGN4n09ZOopcxkPmpDmkcPr52E7VHHQYHcsiBfUtRz_CZfEJUUuL93XRHmtZfEkaUQ5Q6NTmCLf7QR4rUXiyi1b9G1_27W0QfPHmpda7rJncplPq-OolK4tCQ7idoQzkI9MliORgv7w8qwDN39H-fTnpyFIzMqbmt9JF5ieGTSnBji4GHdMCoXImYQgI98R1iOJry3DmksbuvGUsYER2v-5vunpQBtYtFmcpi2QLTXPMsNyz1bGdDseSo-gb-QyDzkVdMyHCNQTy3fPB3x62ft4PoDe_wADqz_Q3mVZmctjz1m00)
